@@ -4,11 +4,7 @@
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
-<<<<<<< HEAD
                     <h3>Sign In</h3>
-=======
-                    <h3>Login</h3>
->>>>>>> 01b2522af4ad057659b54a5880b3c3af6c9b8e36
                     <div class="d-flex justify-content-end social_icon">
                         <span><i class="fab fa-facebook-square"></i></span>
                         <span><i class="fab fa-google-plus-square"></i></span>
@@ -59,10 +55,6 @@
 
     </div>
 
-<<<<<<< HEAD
 </body>
 
 </html>
-=======
-</body>
->>>>>>> 01b2522af4ad057659b54a5880b3c3af6c9b8e36
