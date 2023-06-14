@@ -14,7 +14,7 @@ use App\Http\Controllers\Account;
 |ch
 */
 
-Route::get('/', function () {
+Route::get('/Home', function () {
     return view('clien.layout.index');
 });
 Route::post('/', [Account::class, 'store'])->name('auth.register');
