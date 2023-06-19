@@ -30,10 +30,11 @@
                 <td>{{ $key + 1 }}</td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->publisher->name }}</td>
-                <td><img class="images-detail" src="{{ asset('image/product/' . $product->image) }}" alt="" border=3 height=150 width=150>
+                
+                <td><img class="images-detail" src="{{asset('image/product/'. $product->image[0]->image)}}" alt=""  height=150 width=150>
                 </td>
 
-                <td>{{ $product->price }}</td>
+                <td>{{ $product->price }} $</td>  
 
                 <td>{{ $product->description }}</td>
 

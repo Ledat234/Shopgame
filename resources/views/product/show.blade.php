@@ -34,15 +34,20 @@
             </div>
 
         </div>
-        
-        
+
+
         <div class="col-xs-12 col-sm-12 col-md-12">
 
             <div class="form-group">
 
                 <strong>Image:</strong>
+                <img src="{{ asset('image/product/' . $product->image[0]->image) }}" alt="" style="margin: 15px" height=150 width=250><br>
+                @foreach ($product ->image as $image)
+                    <img src="{{ asset('image/product/' .$image->image) }}" alt="" style="margin: 15px" height=150 width=250>
+                @endforeach
 
-                <img src="{{ asset('image/product/' . $product->image) }}" alt="" border=3 height=150 width=150>
+
+               
 
             </div>
 

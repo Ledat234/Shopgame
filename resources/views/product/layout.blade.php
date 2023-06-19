@@ -22,11 +22,7 @@
             margin-bottom: 50px;
         }
 
-        .images-detail:hover {
-            animation: app-logo-spin infinite 20s linear;
-
-
-        }
+       
 
         @keyframes app-logo-spin {
             from {

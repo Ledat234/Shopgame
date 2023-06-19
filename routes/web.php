@@ -17,9 +17,21 @@ use App\Http\Controllers\CategoryController;
 |ch
 */
 
-Route::get('/Home', function () {
-    return view('clien.layout.index');
-});
+
+
+//edit profile
+Route::get('/profile/edit',[Account::class, 'edit'] )->name('profile.edit');
+Route::post('/profile/update', [Account::class, 'update'])->name('profile.update');
+
+
+Route::get('/game/index', [ProductController::class, 'index'])->name('product.index');
+Route::get('/game/create', [ProductController::class, 'create'])->name('product.create');
+Route::get('/game:delete{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+Route::get('/game/edit{id}', [ProductController::class, 'edit'])->name('product.edit');
+Route::post('/game/update{id}', [ProductController::class, 'update'])->name('product.update');
+Route::get('/game/show{id}', [ProductController::class, 'show'])->name('product.show');
+Route::post('/game/store', [ProductController::class, 'store'])->name('product.store');
+Route::get('/game/home', [ProductController::class, 'home'])->name('product.home');
 
 Route::get('/category/index', [CategoryController::class, 'index'])->name('category.index');
 Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
@@ -54,3 +66,11 @@ Route::get('/', [Account::class, 'showLogin'])->name('welcome.login');
 Route::get('/logout', [Account::class, 'logout'])->name('logout');
 Route::post('/', [Account::class, 'login'])->name('auth.login');
 
+
+Route::get('/publisher/index', [ControllerPublisher::class, 'index'])->name('publisher.index');
+Route::get('/publisher/create', [ControllerPublisher::class, 'create'])->name('publisher.create');
+Route::get('/publisher:delete{id}', [ControllerPublisher::class, 'destroy'])->name('publisher.destroy');
+Route::get('/publisher/edit{id}', [ControllerPublisher::class, 'edit'])->name('publisher.edit');
+Route::post('/publisher/update{id}', [ControllerPublisher::class, 'update'])->name('publisher.update');
+Route::get('/publisher/show{id}', [ControllerPublisher::class, 'show'])->name('publisher.show');
+Route::post('/publisher/store', [ControllerPublisher::class, 'store'])->name('publisher.store');

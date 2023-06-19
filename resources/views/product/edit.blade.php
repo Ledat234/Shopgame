@@ -57,23 +57,10 @@
 
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
-
                 <div class="form-group">
-
-                    <input type="text" name="singer" class="form-control" placeholder="singer"
-                        value="{{ $product->singer }}">
-
-                </div>
-
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                <div class="form-group">
-
                     <strong>Publisher:</strong>
 
-                    <select name="category" class="form-control">
+                    <select name="publisher" class="form-control">
 
                         @foreach ($publishers as $publisher)
                             <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
@@ -94,7 +81,7 @@
                         <div class="form-group">
 
                             <strong>Image:</strong>
-
+                            <img src="{{ asset('image/product/' . $product->image) }}" alt="" border=3 height=150 width=150>
                             <input type="file" class="form-control" placeholder="Image" value="" name="image" />
 
                         </div>

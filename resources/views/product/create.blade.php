@@ -80,7 +80,8 @@
                                 <strong>Image:</strong>
 
                                 <input type="file" class="form-control" placeholder="Image" value=""
-                                    name="image" />
+                                name="image[]" id ="" multiple />
+                                    
 
                             </div>
 
@@ -122,6 +123,12 @@
                                     <textarea class="form-control" style="height:150px" name="description" placeholder="Description"></textarea>
 
                                 </div>
+                            
+
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+
+                              
 
                             </div>
 

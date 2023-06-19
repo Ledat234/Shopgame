@@ -42,6 +42,7 @@ class ProductController extends Controller
                 'name' => 'required',
                 'price' => 'required',
                 'description' => 'required',
+                'image.*' => 'required|image|mimes:jpg,jpeg,png|max:100000',
                 
             ]);
 
@@ -59,32 +60,31 @@ class ProductController extends Controller
                 $Product_Images=[];
                 $images =$request->file('image');
                 foreach($images as $image){
-                    $path =public_path('product/image');
+                    $path =public_path('image/product');
                     $image_name =time().'_'.$image->getClientOriginalName();
                     $image->move($path,$image_name);
                     $Product_Images[] =$image_name;
                 }
+            } else {
+                $image_name = 'noname.jpg';
             }
+            
             
             
             $newProduct = new Product();
             $newProduct->name = $request->name;
             $newProduct->price = $request->price;
             $newProduct->description = $request->description;
-            
             $newProduct->publisher_id = $request->publisher;
-
+           
             $newProduct->save();
 
             $lastInserttedID =$newProduct->id;
-            foreach ($Product_Images as $productimage) {
-                $newProductImage =new Image();
-                $newProductImage->path=$productimage;
+            foreach ($Product_Images as $image) {
+                $newProductImage =new Image(); 
+                $newProductImage->image=$image;
                 $newProductImage->product_id=$lastInserttedID;
                 $newProductImage->save();
-
-
-
             }
 
             return redirect()->route('product.index')
@@ -115,6 +115,7 @@ class ProductController extends Controller
                 'name' => 'required',
                 'price' => 'required',
                 'description' => 'required',
+                
             ]);
 
             if ($validator->fails()) {
