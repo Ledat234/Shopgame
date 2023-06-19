@@ -1,6 +1,5 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <style>
@@ -242,7 +241,7 @@
 
                         <div class="col-md-6">
 
-                            <form action="{{ route('welcome.register') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('auth.register') }}" method="POST" enctype="multipart/form-data">
 
                                 @csrf
 
@@ -343,3 +342,5 @@
     </div>
 
 </div
+
+    
