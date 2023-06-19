@@ -1,127 +1,139 @@
-@extends('admin.product.layout')
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+</html>
+@include('product.layout')
+@extends('admin.layout.index')
 @section('content')
 
-<div class="row">
+    <div class="row">
 
-<div class="col-lg-12 margin-tb">
+        <div class="col-lg-12 margin-tb">
 
-<div class="pull-left">
+            <div class="pull-left">
 
-<h2>Add New Product</h2>
+                <h2>Add New Game</h2>
 
-</div>
+            </div>
 
-<div class="pull-right">
+            <div class="pull-right">
 
-<a class="btn btn-primary" href="{{ route('product.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('product.index') }}"> Back</a>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
-@if ($errors->any())
+    @if ($errors->any())
+        <div class="alert alert-danger">
 
-<div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
 
-<strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
 
-<ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
 
-@foreach ($errors->all() as $error)
+            </ul>
 
-<li>{{ $error }}</li>
+        </div>
+    @endif
 
-@endforeach
+    <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
 
-</ul>
+        @csrf
 
-</div>
+        <div class="row">
 
-@endif
+            <div class="col-xs-12 col-sm-12 col-md-12">
 
-<form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
 
-@csrf
+                    <strong>Name:</strong>
 
-<div class="row">
+                    <input type="text" name="name" class="form-control" placeholder="Name">
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+                </div>
 
-<div class="form-group">
+            </div>
 
-<strong>Name:</strong>
+                <div class="col-xs-12 col-sm-12 col-md-12">
 
-<input type="text" name="name" class="form-control" placeholder="Name">
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
 
-</div>
+                            <div class="form-group">
 
-</div>
+                                <strong>Image:</strong>
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+                                <input type="file" class="form-control" placeholder="Image" value=""
+                                    name="image" />
 
-<div class="form-group">
+                            </div>
 
-<strong>Price:</strong>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
 
-<input type="number" name="price" class="form-control" placeholder="Price">
+                                <div class="form-group">
 
-</div>
+                                    <strong>Publisher:</strong>
 
-</div>
+                                    <select name="publisher" class="form-control">
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+                                        @foreach ($publishers as $publisher)
+                                            <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
+                                        @endforeach
 
-<div class="form-group">
+                                    </select>
 
-<strong>Image:</strong>
+                                </div>
 
-<input type="file" class="form-control" placeholder="Image" value="" name="imageProduct" />
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
 
-</div>
+                                <div class="form-group">
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+                                    <strong>Price:</strong>
 
-<div class="form-group">
+                                    <input type="number" name="price" class="form-control" placeholder="Price">
 
-<strong>Category:</strong>
+                                </div>
 
-<select name="category" class="form-control">
+                            </div>
 
-@foreach($categories as $category)
+                            <div class="col-xs-12 col-sm-12 col-md-12">
 
-<option value="{{$category->category_id}}">{{$category->category_name}}</option>
+                                <div class="form-group">
 
-@endforeach
+                                    <strong>Description:</strong>
 
-</select>
+                                    <textarea class="form-control" style="height:150px" name="description" placeholder="Description"></textarea>
 
-</div>
+                                </div>
 
-</div>
+                            </div>
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 
-<div class="form-group">
+                                <button type="submit" class="btn btn-primary">Submit</button>
 
-<strong>Description:</strong>
+                            </div>
 
-<textarea class="form-control" style="height:150px" name="description" placeholder="Description"></textarea>
+                        </div>
 
-</div>
-
-</div>
-
-<div class="col-xs-12 col-sm-12 col-md-12 text-center">
-
-<button type="submit" class="btn btn-primary">Submit</button>
-
-</div>
-
-</div>
-
-</form>
+    </form>
 
 @endsection
+</body>

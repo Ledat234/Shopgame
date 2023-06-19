@@ -1,137 +1,138 @@
-@extends('admin.product.layout')
-
+@include('product.layout')
+@extends('admin.layout.index')
 @section('content')
 
-<div class="row">
+    <div class="row">
 
-<div class="col-lg-12 margin-tb">
+        <div class="col-lg-12 margin-tb">
 
-<div class="pull-left">
+            <div class="pull-left">
 
-<h2>Edit Product</h2>
+                <h2>Edit Profile Game</h2>
 
-</div>
+            </div>
 
-<div class="pull-right">
+            <div class="pull-right">
 
-<a class="btn btn-primary" href="{{ route('product.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('product.index') }}"> Back</a>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
-@if ($errors->any())
+    @if ($errors->any())
+        <div class="alert alert-danger">
 
-<div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
 
-<strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
 
-<ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
 
-@foreach ($errors->all() as $error)
+            </ul>
 
-<li>{{ $error }}</li>
+        </div>
+    @endif
 
-@endforeach
+    <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
 
-</ul>
+        @csrf
 
-</div>
+        <div class="row">
 
-@endif
+            <div class="col-xs-12 col-sm-12 col-md-12">
 
-<form action="{{ route('product.update',$product->id) }}" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
 
-@csrf
+                    <strong>Name:</strong>
 
-<div class="row">
+                    <input type="text" name="name" class="form-control" placeholder="Name"
+                        value="{{ $product->name }}">
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+                </div>
 
-<div class="form-group">
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
 
-<strong>Name:</strong>
+                <div class="form-group">
 
-<input type="text" name="name" class="form-control" placeholder="Name" value="{{ $product->name }}">
+                    <input type="text" name="singer" class="form-control" placeholder="singer"
+                        value="{{ $product->singer }}">
 
-</div>
+                </div>
 
-</div>
+            </div>
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-12 col-sm-12 col-md-12">
 
-<div class="form-group">
+                <div class="form-group">
 
-<input type="number" name="price" class="form-control" placeholder="Price" value="{{ $product->price }}">
+                    <strong>Publisher:</strong>
 
-</div>
+                    <select name="category" class="form-control">
 
-</div>
+                        @foreach ($publishers as $publisher)
+                            <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
+                        @endforeach
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+                    </select>
 
-<div class="form-group">
+                </div>
 
-<strong>Category:</strong>
+            </div>
 
-<select name="category" class="form-control">
+            <div class="col-xs-12 col-sm-12 col-md-12">
 
-@foreach($categories as $category)
+                <div class="form-group">
 
-<option value="{{$category->id}}">{{$category->name}}</option>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
 
-@endforeach
+                        <div class="form-group">
 
-</select>
+                            <strong>Image:</strong>
 
-</div>
+                            <input type="file" class="form-control" placeholder="Image" value="" name="image" />
 
-</div>
+                        </div>
+                    </div>
+                </div>
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
 
-<div class="form-group">
+                <div class="form-group">
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+                    <input type="number" name="price" class="form-control" placeholder="Price"
+                        value="{{ $product->price }}">
 
-<div class="form-group">
+                </div>
 
-<strong>Image:</strong>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
 
-<img src="{{ asset('image/product/'.$product->image) }}" alt="" border=3 height=150 width=200>
+                <div class="form-group">
 
-</div>
+                    <strong>Description:</strong>
 
-</div>
+                    <textarea class="form-control" style="height:150px" name="description" placeholder="Description">{{ $product->description }}</textarea>
 
-<input type="file" class="form-control" placeholder="Image" value="" name="imageProduct" />
+                </div>
 
-</div>
+            </div>
+            
 
-</div>
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+                <button type="submit" class="btn btn-primary">Submit</button>
 
-<div class="form-group">
+            </div>
 
-<strong>Description:</strong>
+        </div>
 
-<textarea class="form-control" style="height:150px" name="description" placeholder="Description">{{ $product->description }}</textarea>
-
-</div>
-
-</div>
-
-<div class="col-xs-12 col-sm-12 col-md-12 text-center">
-
-<button type="submit" class="btn btn-primary">Submit</button>
-
-</div>
-
-</div>
-
-</form>
+    </form>
 
 @endsection

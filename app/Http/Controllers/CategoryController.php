@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-
+use App\Models\Category;
 class CategoryController extends Controller
 {
 
@@ -15,7 +17,7 @@ public function index()
 {
 
     $categories = Category::all();
-    return view('admin.category.index', compact('categories'));
+    return view('category.index', compact('categories'));
 
 // $categories = Category::latest()->paginate(5);
 
@@ -29,7 +31,7 @@ public function create()
 
 {
 
-return view('admin.category.create');
+return view('category.create');
 
 }
 
@@ -79,7 +81,7 @@ public function show($id)
 
 $category = Category::find($id);
 
-return view('admin.category.show', ['category' => $category]);
+return view('category.show', ['category' => $category]);
 
 }
 
@@ -89,7 +91,7 @@ public function edit($id)
 
 $category = Category::find($id);
 
-return view('admin.category.edit', ['category' => $category]);
+return view('category.edit', ['category' => $category]);
 
 }
 

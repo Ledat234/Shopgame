@@ -39,7 +39,7 @@
                
             </div>
         <div>
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ route('auth.login') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>Sign Up</a>
         </div>
             

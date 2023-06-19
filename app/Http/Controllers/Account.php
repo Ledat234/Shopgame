@@ -35,38 +35,34 @@ class Account extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-
             'email' => 'required|email',
             'password' => 'required',
-
         ]);
-
+        
         if ($validator->fails()) {
-
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
-
         }
+        
         $credentials = $request->only('email', 'password');
-
+        
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-
+            Auth::login($user); // Lưu thông tin người dùng vào session
+        
             if ($user->role == '1') {
                 return redirect()->intended('/');
-            } 
-            elseif(($user->role == '2')){
-
-            }
-            else {
-                return redirect()->intended('/');
+            } elseif ($user->role == '2') {
+                // Xử lý cho role 2
+                return redirect()->intended('product.index');
+            } else {
+                return redirect()->intended('/Home');
             }
         }
         
         return redirect('/')->with('error', 'Invalid login credentials');
-
-
+        
     }
 
     public function store(Request $request)
@@ -78,6 +74,8 @@ class Account extends Controller
 
                 'email' => 'required|email|max:100',
                 'name' => 'required|min:5|max:1000',
+                'country' => 'required|max:1000',
+                'numberphone' => 'required|max:15',
                 'password' => 'required|confirmed|max:16|min:6',
 
             ]);
@@ -97,6 +95,8 @@ class Account extends Controller
             if (!$user) {
                 $newUser = new Users();
                 $newUser->email = $request->email;
+                $newUser->country=$request->country;
+                $newUser->numberphone=$request->numberphone;
                 $newUser->password = Hash::make($request->password);
                 $newUser->name = $request->name;
                 $newUser->role_id = $request->role;
@@ -121,4 +121,31 @@ class Account extends Controller
         return redirect()->route('welcome.login');
 
     }
+    public function edit()
+{
+    $user = auth()->user();
+    return view('auth.edit', compact('user'));
+}
+
+public function update(Request $request)
+{
+    $user = auth()->user();
+
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+        
+        // Thêm các validation rules cho các cột khác
+    ]);
+
+    $user->name = $validatedData['name'];
+    $user->email = $validatedData['email'];
+    
+    // Cập nhật các cột khác
+
+    $user->save();
+
+    return redirect()->route('auth.edit')->with('success', 'Profile updated successfully.');
+}
+
 }

@@ -3,8 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Password;
-use Illuminate\Http\Request;
 
 return new class extends Migration
 {
@@ -15,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+        Schema::create('image', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('image');
+            $table->unsignedInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('product');
+            $table->timestamps();
         });
     }
 
@@ -29,7 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+        Schema::dropIfExists('image');
     }
 };
-    

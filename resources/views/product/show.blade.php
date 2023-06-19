@@ -1,89 +1,88 @@
-@extends('admin.product.layout')
-
+@include('product.layout')
+@extends('admin.layout.index')
 @section('content')
+    <div class="row">
 
-<div class="row">
+        <div class="col-lg-12 margin-tb">
 
-<div class="col-lg-12 margin-tb">
+            <div class="pull-left">
 
-<div class="pull-left">
+                <h2> Show Game</h2>
 
-<h2> Show Product</h2>
+            </div>
 
-</div>
+            <div class="pull-right">
 
-<div class="pull-right">
+                <a class="btn btn-primary" href="{{ route('product.index') }}"> Back</a>
 
-<a class="btn btn-primary" href="{{ route('product.index') }}"> Back</a>
+            </div>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
-</div>
+    <div class="row">
 
-<div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
 
-<div class="form-group">
+                <strong>Name:</strong>
 
-<strong>Name:</strong>
+                {{ $product->name }}
 
-{{ $product->name }}
+            </div>
 
-</div>
+        </div>
+        
+        
+        <div class="col-xs-12 col-sm-12 col-md-12">
 
-</div>
+            <div class="form-group">
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+                <strong>Image:</strong>
 
-<div class="form-group">
+                <img src="{{ asset('image/product/' . $product->image) }}" alt="" border=3 height=150 width=150>
 
-<strong>Image:</strong>
+            </div>
 
-<img src="{{ asset('image/product/'.$product->image) }}" alt="" border=3 height=150 width=200>
+        </div>
 
-</div>
 
-</div>
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-12">
 
-<div class="form-group">
+            <div class="form-group">
 
-<strong>Price:</strong>
+                <strong>Publisher:</strong>
 
-{{ $product->price }}
+                {{ $product->publisher->name }}
 
-</div>
+            </div>
 
-</div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
 
-<div class="form-group">
+                <strong>Price:</strong>
 
-<strong>Category:</strong>
+                {{ $product->price }}
 
-{{ $product->category->name }}
+            </div>
 
-</div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
 
-</div>
+            <div class="form-group">
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+                <strong>Details:</strong>
 
-<div class="form-group">
+                {{ $product->description }}
 
-<strong>Details:</strong>
+            </div>
 
-{{ $product->description }}
+        </div>
 
-</div>
-
-</div>
-
-</div>
-
+    </div>
 @endsection
