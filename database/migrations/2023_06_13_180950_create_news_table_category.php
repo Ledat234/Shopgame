@@ -17,12 +17,10 @@ return new class extends Migration
     
     Schema::create('category', function (Blueprint $table) {
     
-    $table->increments('category_id');
-    
-    $table->string('category_name');
-    
-    $table->string('category_description');
-    
+        $table->increments('id');
+        $table->string('name',255) ->nullable();
+        $table->string('description');
+        $table->timestamps();
     });
     
     }

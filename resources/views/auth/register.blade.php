@@ -1,15 +1,13 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
-
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <style>
     body{
-        background-image: url('background2.jpg');
+        background-image: url('1303457.jpg');
     }
     .register {
 
-        background: #8a85e2;
+        
 
         margin-top: 3%;
 
@@ -67,7 +65,7 @@
 
         margin-bottom: 5%;
 
-        width: 25%;
+        width: 35%;
 
         -webkit-animation: mover 2s infinite alternate;
 
@@ -222,7 +220,7 @@
 
         <div class="col-md-3 register-left">
 
-            <img src="https://cdn.pixabay.com/photo/2015/05/11/22/11/musical-notes-763193_960_720.png" alt="" />
+            <img src="https://static.vecteezy.com/system/resources/previews/015/370/017/original/gaming-console-illustration-isolated-on-transparent-background-free-png.png" alt="" />
 
             <h3>Welcome</h3><br><br><br>
 
@@ -247,28 +245,53 @@
                                 @csrf
 
                                 <!-- Equivalent to... -->
+                                <div class="form-group">
 
+                                    <input type="text" class="form-control" placeholder="Full Name" value=""
+                                        name="name" />
+                                        @if ($errors->has('name'))
+                                        {{ $errors->first('name') }}
+                                    @endif
+                                </div>
+                                
+                                <div class="form-group">
+
+                                    <input type="text" class="form-control" placeholder="Country" value=""
+                                        name="country" />
+
+                                        @if ($errors->has('country'))
+                                        {{ $errors->first('country') }}
+                                @endif
+                                </div>
+                                <div class="form-group">
+
+                                    <input type="text" class="form-control" placeholder="Phone number" value=""
+                                        name="numberphone" />
+                                        @if ($errors->has('numberphone'))
+                                        {{ $errors->first('numberphone') }}
+                                @endif
+                                </div>
                                 <div class="form-group">
 
                                     <input type="email" class="form-control" placeholder="Your Email *" value=""
                                         name="email" />
-
+                                        @if ($errors->has('email'))
+                                        {{ $errors->first('email') }}
+                                    @endif
                                 </div>
 
-                                @if ($errors->has('email'))
-                                    {{ $errors->first('email') }}
-                                @endif
+                               
 
                                 <div class="form-group">
 
                                     <input type="password" class="form-control" placeholder="Password *" value=""
                                         name="password" />
 
+                                        @if ($errors->has('password'))
+                                        {{ $errors->first('password') }}
+                                    @endif
                                 </div>
 
-                                @if ($errors->has('password'))
-                                    {{ $errors->first('password') }}
-                                @endif
 
                                 <div class="form-group">
 
@@ -277,25 +300,24 @@
 
                                 </div>
 
-                                <div class="form-group">
+                                
 
-                                    <input type="text" class="form-control" placeholder="Full Name" value=""
-                                        name="name" />
+                              
 
-                                </div>
 
-                                @if ($errors->has('name'))
-                                    {{ $errors->first('name') }}
-                                @endif
+                              
+
 
 
                                 <div class="form-group">
 
                                     <select class="form-control" name="role">
 
-                                    @foreach ($roles as $role)
+                                        @foreach ($roles as $role)
+                                        @if ($role->id !== 3)
                                             <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                        @endforeach
+                                        @endif
+                                    @endforeach
                                     </select>
 
                                     @if ($errors->has('role'))

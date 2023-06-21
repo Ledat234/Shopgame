@@ -7,7 +7,8 @@
             </button>
 
             <a href="#" class="logo">
-                <img src="https://www.creativosonline.org/wp-content/uploads/2022/11/gamer-logo.png" alt="Molla Logo" width="100" height="100" style="border-radius:100px ">
+                <img src="https://www.creativosonline.org/wp-content/uploads/2022/11/gamer-logo.png" alt="ShopGame Logo"
+                    width="100" height="100" style="border-radius:100px ">
             </a>
         </div><!-- End .header-left -->
 
@@ -36,14 +37,22 @@
                     </div>
                     <p>Cart</p>
                 </a>
-               
+
             </div>
-        <div>
-            <a class="nav-link" href="#">
-                <i class="fas fa-fw fa-tachometer-alt"></i>Sign Up</a>
-        </div>
-            
-            
+            <div class="wishlist">
+                <a class="nav-link" href="#" title="Account">
+                    <div class="icon">
+                        <img src="https://cdn.onlinewebfonts.com/svg/img_88236.png" alt="" width="30px" height="30px">
+                        <i class="icon-profile"></i>
+                        
+                    </div>
+                    @if (session('user'))
+                        <p>{{ session('user')->name }}</p>
+                    @endif
+                </a>
+            </div>
+
+
         </div><!-- End .header-right -->
     </div><!-- End .container -->
 </div><!-- End .header-middle -->

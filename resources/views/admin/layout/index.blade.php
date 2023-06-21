@@ -1,18 +1,22 @@
 @include('admin.layout.head')
-
 <div id="wrapper">
-    @include('admin.layout.sidebar')
+    @include('admin.layout.navbar')
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
-        <div id="content">
-            @include('admin.layout.navbar')
+
+            @include('admin.layout.sidebar')
+            <div class="content-wrapper">
             <div class="container-fluid">
+                @if (session('user'))
+                    <p>Hello , {{ session('user')->name }}</p>
+                @endif
+
                 <!-- Hiển thị nội dung của từng trang con-->
                 @yield('content')
             </div>
         </div>
-        @include('admin.layout.footer')
+       
     </div>
+    @include('admin.layout.footer')
     @include('admin.layout.js')
-   
