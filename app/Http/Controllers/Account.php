@@ -51,13 +51,13 @@ class Account extends Controller
             $user = Auth::user();
             Auth::login($user); // Lưu thông tin người dùng vào session
         
-            if ($user->role == '1') {
-                return redirect()->intended('/');
-            } elseif ($user->role == '2') {
+            if ($user->role_id == '1') {
+                return redirect()->intended('/game/index');
+            } elseif ($user->role_id == '2') {
                 // Xử lý cho role 2
-                return redirect()->intended('product.index');
+                return redirect()->intended('/game/home');
             } else {
-                return redirect()->intended('/Home');
+                return redirect()->intended('/');
             }
         }
         

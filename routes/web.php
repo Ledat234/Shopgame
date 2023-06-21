@@ -61,7 +61,7 @@ Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPa
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
-Route::post('/', [Account::class, 'store'])->name('auth.register');
+Route::post('/register', [Account::class, 'store'])->name('auth.register');
 Route::get('/register', [Account::class, 'show'])->name('welcome.register');
 Route::get('/', [Account::class, 'showLogin'])->name('welcome.login');
 Route::get('/logout', [Account::class, 'logout'])->name('logout');
