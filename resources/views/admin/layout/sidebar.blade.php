@@ -1,113 +1,133 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">GAME MANAGER</div>
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+        <img src="https://www.creativosonline.org/wp-content/uploads/2022/11/gamer-logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" width="50px" height="50px">
+        <span class="brand-text font-weight-light">Admin</span>
     </a>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Home</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Interface
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Manager Game</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img title="Account" class="img-profile rounded-circle"
+                src="https://cdn.onlinewebfonts.com/svg/img_88236.png" alt="" width="30px"
+                height="30px" style="padding: 0px">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block">
+                    @if (session('user'))
+                        <p>{{ session('user')->name }}</p>
+                    @endif
+                    
+                   
+                    
+                </a>
             </div>
         </div>
-    </li>
 
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Add new Game</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="utilities-color.html">Colors</a>
-                <a class="collapse-item" href="utilities-border.html">Borders</a>
-                <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                <a class="collapse-item" href="utilities-other.html">Other</a>
-            </div>
-        </div>
-    </li>
+        <!-- SidebarSearch Form -->
+       
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Addons
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-            aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Category</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Register</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
-                <a class="collapse-item" href="blank.html">Blank Page</a>
-            </div>
-        </div>
-    </li>
-
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>New Category</span></a>
-    </li>
-
-    <!-- Nav Item - Tables -->
-    
-
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
-
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
-
-   
-
-</ul>
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Dashboard
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="./index.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Home Admin</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('product.home') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Home Customer</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./index3.html" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Home Seller</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+               
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Manage Options
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right">6</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('product.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage Game</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('publisher.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage Publisher</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> Manage Category</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Fixed Sidebar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Fixed Sidebar <small>+ Custom Area</small></p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/layout/fixed-topnav.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Fixed Navbar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/layout/fixed-footer.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Fixed Footer</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Collapsed Sidebar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+ 
+    <!-- /.sidebar -->
+</aside>
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+</aside>

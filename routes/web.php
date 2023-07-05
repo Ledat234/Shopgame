@@ -18,8 +18,9 @@ use App\Http\Controllers\ControllerPublisher;
 |ch
 */
 
-
-
+Route::get('/test', function () {
+    return view('viewproduct.index');
+});
 //edit profile
 Route::get('/profile/edit',[Account::class, 'edit'] )->name('profile.edit');
 Route::post('/profile/update', [Account::class, 'update'])->name('profile.update');
@@ -61,11 +62,16 @@ Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPa
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
-Route::post('/register', [Account::class, 'store'])->name('auth.register');
+Route::post('/account/login', [Account::class, 'store'])->name('auth.register');
 Route::get('/register', [Account::class, 'show'])->name('welcome.register');
 Route::get('/', [Account::class, 'showLogin'])->name('welcome.login');
 Route::get('/logout', [Account::class, 'logout'])->name('logout');
-Route::post('/', [Account::class, 'login'])->name('auth.login');
+Route::post('/login', [Account::class, 'login'])->name('auth.login');
+
+Route::get('/account/edit{id}', [Account::class, 'edit'])->name('welcome.update');
+Route::post('/account/update{id}', [Account::class, 'update'])->name('auth.update');
+Route::get('/account/index', [Account::class, 'showAccount'])->name('welcome.index');
+Route::get('/account:delete{id}', [ControllerPublisher::class, 'destroy'])->name('welcome.destroy');
 
 
 Route::get('/publisher/index', [ControllerPublisher::class, 'index'])->name('publisher.index');

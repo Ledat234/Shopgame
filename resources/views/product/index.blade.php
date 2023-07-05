@@ -7,7 +7,10 @@
                 <h2>Game Management</h2>
             </div>
             <br><br>
-            
+            <div class="pull-left">
+                <a class="btn btn-success" href="{{ route('product.create') }}"> Add New Game</a>
+            </div>
+
         </div>
     </div>
     @if ($message = Session::get('success'))
@@ -19,22 +22,24 @@
         <tr>
             <th>No</th>
             <th>Name</th>
-            <th>Punlisher</th>
+            <th>Publisher</th>
             <th>Image</th>
             <th>Price</th>
             <th>Details</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($products as $key => $product)
+        
             <tr>
                 <td>{{ $key + 1 }}</td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->publisher->name }}</td>
-                
-                <td><img class="images-detail" src="{{asset('image/product/'. $product->image[0]->image)}}" alt=""  height=150 width=150>
+
+                <td><img class="images-detail" src="{{ asset('image/product/' . $product->image[0]->image) }}" alt=""
+                        height=150 width=150>
                 </td>
 
-                <td>{{ $product->price }} $</td>  
+                <td>{{ $product->price }} $</td>
 
                 <td>{{ $product->description }}</td>
 
@@ -48,5 +53,6 @@
                 </td>
             </tr>
         @endforeach
+        
     </table>
 @endsection

@@ -9,22 +9,29 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Users;
-use App\Models\Product;
+use Session;
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 
 class Account extends Controller
 {
-    
+
 
     public function show()
     {
-        $roles= Role::all();
+        $roles = Role::all();
 
-        return view('auth.register',['roles' =>$roles]); //return register page
+        return view('auth.register', ['roles' => $roles]); //return register page
 
     }
+    public function showAccount()
+    {
+        $users = Users::latest()->paginate(20);
 
+        return view('auth.index', compact('users'))
+
+            ->with('i', (request()->input('page', 1) - 1) * 20);
+    }
     public function showLogin()
     {
         return view('auth.login'); //return login page
@@ -38,31 +45,34 @@ class Account extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        
+
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
-        
+
         $credentials = $request->only('email', 'password');
-        
+
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             Auth::login($user); // Lưu thông tin người dùng vào session
-        
-            if ($user->role_id == '1') {
+
+            if ($user->role_id == 1) {
+                $request->session()->put('user', Auth::user());
                 return redirect()->intended('/game/index');
-            } elseif ($user->role_id == '2') {
+            } elseif ($user->role_id == 2) {
                 // Xử lý cho role 2
+                $request->session()->put('user', Auth::user());
                 return redirect()->intended('/game/home');
-            } else {
+            } elseif ($user->role_id == 3) {
+                $request->session()->put('user', Auth::user());
                 return redirect()->intended('/');
             }
         }
-        
+
         return redirect('/')->with('error', 'Invalid login credentials');
-        
+
     }
 
     public function store(Request $request)
@@ -95,8 +105,8 @@ class Account extends Controller
             if (!$user) {
                 $newUser = new Users();
                 $newUser->email = $request->email;
-                $newUser->country=$request->country;
-                $newUser->numberphone=$request->numberphone;
+                $newUser->country = $request->country;
+                $newUser->numberphone = $request->numberphone;
                 $newUser->password = Hash::make($request->password);
                 $newUser->name = $request->name;
                 $newUser->role_id = $request->role;
@@ -121,31 +131,61 @@ class Account extends Controller
         return redirect()->route('welcome.login');
 
     }
-    public function edit()
-{
-    $user = auth()->user();
-    return view('auth.edit', compact('user'));
-}
+    public function edit($id)
+    {
+        $roles = Role::all();
 
-public function update(Request $request)
-{
-    $user = auth()->user();
+        $user = Users::with('role')->find($id);
 
-    $validatedData = $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
-        
-        // Thêm các validation rules cho các cột khác
-    ]);
+        return view('auth.edit', ['user' => $user, 'roles' => $roles]);
 
-    $user->name = $validatedData['name'];
-    $user->email = $validatedData['email'];
+
+    }
+
+    public function update(Request $request, $id)
+    {
+        if ($request->isMethod('POST')) {
+
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email|max:100',
+                'name' => 'required|min:5|max:1000',
+                'country' => 'required|max:1000',
+                'numberphone' => 'required|max:15',
+                'password' => 'required|confirmed|max:16|min:6',
+
+            ]);
+
+            if ($validator->fails()) {
+
+                return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+
+            }
+
+
+
+            $user = Users::find($id);
+            if ($user != null) {
+                $user->name = $request->name;
+                $user->country = $request->country;
+                $user->numberphone = $request->numberphone;
+                $user->email = $request->email;
+                $user->password = Hash::make($request->password);
+                $user->role_id = $request->role;
+                $user->save();
+
+                $user->save();
+                return redirect()->route('product.index')
+                    ->with('success', 'Account updated successfully');
+            } else {
+                return redirect()->route('product.index')
+                    ->with('Error', 'Account not update');
+
+            }
+
+        }
+
+    }
     
-    // Cập nhật các cột khác
-
-    $user->save();
-
-    return redirect()->route('auth.edit')->with('success', 'Profile updated successfully.');
-}
-
 }

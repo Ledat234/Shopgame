@@ -32,9 +32,7 @@
                     <div class="widget widget-about">
                         <img src="https://vn-test-11.slatic.net/shop/8b6ebc3d3b65f37e9fe71cec5389912c.png" class="footer-logo" alt="Footer Logo"
                             width="105" height="25">
-                        <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros
-                            eu erat. </p>
-
+                     
                         <div class="widget-call">
                             <i class="icon-phone"></i>
                             Got Question? Call us 24/7
@@ -48,9 +46,9 @@
                         <h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
 
                         <ul class="widget-list">
-                            <li><a href="about.html">About Molla</a></li>
+                            <li><a href="about.html">About Shopgame</a></li>
                             <li><a href="#">Our Services</a></li>
-                            <li><a href="#">How to shop on Molla</a></li>
+                            <li><a href="#">How to shop on Shopgame</a></li>
                             <li><a href="faq.html">FAQ</a></li>
                             <li><a href="contact.html">Contact us</a></li>
                         </ul><!-- End .widget-list -->

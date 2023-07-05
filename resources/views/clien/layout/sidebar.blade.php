@@ -5,7 +5,6 @@
                 <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Browse Categories">
                     Game Categories <i class="icon-angle-down"></i>
                 </a>
-
                 <div class="dropdown-menu">
                     <nav class="side-nav">
                         <ul class="menu-vertical sf-arrows">
