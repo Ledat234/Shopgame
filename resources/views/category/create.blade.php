@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-   
-        @extends('admin.product.layout')
-
+@include('product.layout')
+@extends('admin.layout.index')
 @section('content')
 
 <div class="row">
@@ -64,7 +54,7 @@
 
 <strong>Name:</strong>
 
-<input type="text" name="category_name" class="form-control" placeholder="Name">
+<input type="text" name="name" class="form-control" placeholder="Name">
 
 </div>
 
@@ -78,7 +68,7 @@
 
 <strong>Description:</strong>
 
-<textarea class="form-control" style="height:150px" name="category_description" placeholder="Description"></textarea>
+<textarea class="form-control" style="height:150px" name="description" placeholder="Description"></textarea>
 
 </div>
 

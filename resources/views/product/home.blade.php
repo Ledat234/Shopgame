@@ -4,39 +4,34 @@
     <h2 class="list-product-title">NEW Game</h2>
 
     <div class="list-product-subtitle">
-
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
         <p>List Game New</p>
 
-    </div>
-    <div class="product-group">
+        <div class="product-group">
 
-        <div class="row">
+            <div class="row">
+               
 
-            @foreach ($products as $key => $product)
-                <div class="el-wrapper">
-                    <div class="box-up">
-                        <img class="images-detail" src="{{ asset('image/product/' . $product->image[0]->image) }}"
-                            alt="" height=150 width=250>
-                        <div class="img-info">
-                            <div class="info-inner">
-                                <span class="p-name">{{ $product->name }}</span>
+                @foreach ($products as $product)
+                    <div class="col-xs-18 col-sm-6 col-md-4" style="margin-top:10px;">
+                        <div class="img_thumbnail productlist">
+                            <img class="images" src="{{ asset('image/product/' . $product->image[0]->image) }}"
+                                alt="">
+                            <div class="caption">
+                                <h4>{{ $product->name }}</h4>
+                                <p>{{ $product->description }}</p>
+                                <p><strong>Price: </strong> ${{ $product->price }}</p>
+                                <p class="btn-holder"><a href="{{ route('add_to_cart', $product->id) }}"
+                                        class="btn btn-primary btn-block text-center" role="button">Add to cart</a> </p>
                             </div>
                         </div>
                     </div>
-                    <div class="box-down">
-                        <div class="h-bg">
-                            <div class="h-bg-inner"></div>
-                        </div>
-                        <a class="cart" href="{{ url('add-to-cart/' . $product->id) }}">
-                            <span class="price">{{ $product->price }} $</span>
-                            <span class="add-to-cart">
-                                <span class="txt">Add to cart</span>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
-    </div>
-@endsection
+    @endsection

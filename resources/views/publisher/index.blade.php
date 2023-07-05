@@ -7,6 +7,9 @@
                 <h2>Publisher Management</h2>
             </div>
         </div>
+        <div class="pull-left">
+            <a class="btn btn-success" href="{{ route('publisher.create') }}"> Add New Game</a>
+        </div>
     </div>
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -31,9 +34,7 @@
         </tr>
 
         @foreach ($publishers as $key => $publisher)
-        <div class="pull-left">
-            <a class="btn btn-success" href="{{ route('publisher.create') }}"> Add New Game</a>
-        </div>
+       
             <tr>
 
                 <td>{{ $key + 1 }}</td>

@@ -1,4 +1,4 @@
-@include('music.layout')
+@include('product.layout')
 @extends('admin.layout.index')
 @section('content')
 
@@ -65,7 +65,7 @@
 
                 <strong>Country:</strong>
 
-                <textarea class="form-control" style="height:150px" name="country" placeholder="Description">{{ $category->category_description }}</textarea>
+                <textarea class="form-control" style="height:150px" name="country" placeholder="Description">{{ $publisher->country }}</textarea>
 
             </div>
 

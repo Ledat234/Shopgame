@@ -7,7 +7,9 @@
                 <h2>Game Management</h2>
             </div>
             <br><br>
-
+            <div class="pull-left">
+                <a class="btn btn-success" href="{{ route('product.create') }}"> Add New Game</a>
+            </div>
         </div>
     </div>
     @if ($message = Session::get('success'))
@@ -26,9 +28,7 @@
             <th width="280px">Action</th>
         </tr>
         @foreach ($products as $key => $product)
-        <div class="pull-left">
-            <a class="btn btn-success" href="{{ route('product.create') }}"> Add New Game</a>
-        </div>
+        
             <tr>
                 <td>{{ $key + 1 }}</td>
                 <td>{{ $product->name }}</td>

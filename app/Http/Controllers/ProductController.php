@@ -110,12 +110,13 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         if ($request->isMethod('POST')) {
+            
 
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'price' => 'required',
                 'description' => 'required',
-                
+                'image.*' => 'required|image|mimes:jpg,jpeg,png|max:100000',
             ]);
 
             if ($validator->fails()) {
@@ -125,10 +126,21 @@ class ProductController extends Controller
                     ->withInput();
 
             }
-
-           
-
+            if($request->hasfile('image')){
+                $Product_Images=[];
+                $images =$request->file('image');
+                foreach($images as $image){
+                    
+                    $path =public_path('image/product');
+                    $image_name =time().'_'.$image->getClientOriginalName();
+                    $image->move($path,$image_name);
+                    $Product_Images[] =$image_name;
+                }   
+            } else {
+                $image_name = 'noname.jpg';
+            }
             $product = Product::find($id);
+            
             if ($product != null) {
                 $product->name = $request->name;
                 $product->price = $request->price;
@@ -136,6 +148,13 @@ class ProductController extends Controller
                 $product->publisher_id = $request->publisher;
               
                 $product->save();
+                foreach ($Product_Images as $image) {
+                    $productImage = new Image();
+                    $productImage->image = $image;
+                    $productImage->product_id = $product->id;
+                    $productImage->save();
+                }
+    
                 return redirect()->route('product.index')
                     ->with('success', 'Game updated successfully');
             } else {
@@ -146,11 +165,10 @@ class ProductController extends Controller
 
         }
     }
+
     public function destroy($id)
     {
         $product = Product::find($id);
-
-        
 
         $product->delete();
 

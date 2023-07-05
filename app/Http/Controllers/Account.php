@@ -150,8 +150,7 @@ class Account extends Controller
                 'email' => 'required|email|max:100',
                 'name' => 'required|min:5|max:1000',
                 'country' => 'required|max:1000',
-                'numberphone' => 'required|max:15',
-                'password' => 'required|confirmed|max:16|min:6',
+                'numberphone' => 'required|max:15'
 
             ]);
 
@@ -171,10 +170,7 @@ class Account extends Controller
                 $user->country = $request->country;
                 $user->numberphone = $request->numberphone;
                 $user->email = $request->email;
-                $user->password = Hash::make($request->password);
                 $user->role_id = $request->role;
-                $user->save();
-
                 $user->save();
                 return redirect()->route('product.index')
                     ->with('success', 'Account updated successfully');
@@ -186,6 +182,14 @@ class Account extends Controller
 
         }
 
+    }
+    public function loginAdmin()
+    {
+        $users = Users::latest()->paginate(20);
+
+        return view('admin.home', compact('users'))
+
+            ->with('i', (request()->input('page', 1) - 1) * 20);
     }
     
 }

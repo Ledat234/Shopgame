@@ -1,4 +1,3 @@
-
 @extends('admin.layout.index')
 @section('content')
     <div class="row">
@@ -8,6 +7,7 @@
             </div>
         </div>
     </div>
+
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
 
@@ -15,7 +15,9 @@
 
         </div>
     @endif
-
+    <div class="pull-left">
+        <a class="btn btn-success" href="{{ route('category.create') }}"> Add New Game</a>
+    </div>
     <table class="table table-bordered">
 
         <tr>
@@ -37,7 +39,7 @@
 
                 <td>{{ $category->name }}</td>
 
-                <td>{{ $category->category_description }}</td>
+                <td>{{ $category->description }}</td>
 
                 <td>
 

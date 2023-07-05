@@ -11,7 +11,8 @@
                   }
               }
           }'>
-            <div class="intro-slide" style="background-image: url(https://wallpapers.com/images/hd/high-on-life-video-game-6o7xzhuk5jaz9ydu.jpg);">
+            <div class="intro-slide"
+                style="background-image: url(https://wallpapers.com/images/hd/high-on-life-video-game-6o7xzhuk5jaz9ydu.jpg);">
                 <div class="container intro-content">
                     <div class="row justify-content-end">
                         <div class="col-auto col-sm-7 col-md-6 col-lg-5">
@@ -68,8 +69,10 @@
     </div><!-- End .intro-slider-container -->
 
     <div class="container">
-        <h2 class="title text-center mb-4">Game Hot <img src="https://static.vecteezy.com/system/resources/previews/020/522/257/original/fire-emoji-icon-free-png.png" width="25px" height="25px" style="display:inline"></h2><!-- End .title text-center -->
-        
+        <h2 class="title text-center mb-4">Game Hot <img
+                src="https://static.vecteezy.com/system/resources/previews/020/522/257/original/fire-emoji-icon-free-png.png"
+                width="25px" height="25px" style="display:inline"></h2><!-- End .title text-center -->
+
 
         <div class="cat-blocks-container">
             <div class="row">
@@ -77,7 +80,9 @@
                     <a href="category.html" class="cat-block">
                         <figure>
                             <span>
-                                <img style="border-radius: 10%" src="https://gamek.mediacdn.vn/133514250583805952/2023/4/24/xdef-hero-bg-desktop-1920-1682309763812-16823097639521575863385-1682348579277-16823485800501024157777.jpg" alt="Category image">
+                                <img style="border-radius: 10%"
+                                    src="https://gamek.mediacdn.vn/133514250583805952/2023/4/24/xdef-hero-bg-desktop-1920-1682309763812-16823097639521575863385-1682348579277-16823485800501024157777.jpg"
+                                    alt="Category image">
                             </span>
                         </figure>
 
@@ -89,7 +94,9 @@
                     <a href="category.html" class="cat-block">
                         <figure>
                             <span>
-                                <img style="border-radius: 10%" src="https://kenh14cdn.com/2020/2/24/photo-1-15825282172301099647419.jpg" alt="Category image">
+                                <img style="border-radius: 10%"
+                                    src="https://kenh14cdn.com/2020/2/24/photo-1-15825282172301099647419.jpg"
+                                    alt="Category image">
                             </span>
                         </figure>
 
@@ -101,7 +108,9 @@
                     <a href="category.html" class="cat-block">
                         <figure>
                             <span>
-                                <img style="border-radius: 10%" src="https://bloganchoi.com/wp-content/uploads/2021/08/egs-narakabladepoint-24entertainment.jpg" alt="Category image">
+                                <img style="border-radius: 10%"
+                                    src="https://bloganchoi.com/wp-content/uploads/2021/08/egs-narakabladepoint-24entertainment.jpg"
+                                    alt="Category image">
                             </span>
                         </figure>
 
@@ -113,7 +122,9 @@
                     <a href="category.html" class="cat-block">
                         <figure>
                             <span>
-                                <img style="border-radius: 10%" src="https://mcdn.coolmate.me/uploads/January2022/game-offline-cho-may-cau-hinh-yeu-4.jpg" alt="Category image">
+                                <img style="border-radius: 10%"
+                                    src="https://mcdn.coolmate.me/uploads/January2022/game-offline-cho-may-cau-hinh-yeu-4.jpg"
+                                    alt="Category image">
                             </span>
                         </figure>
 
@@ -125,7 +136,9 @@
                     <a href="category.html" class="cat-block">
                         <figure>
                             <span>
-                                <img style="border-radius: 10%" src="https://didongviet.vn/dchannel/wp-content/uploads/2022/10/6-audit-game-pc-didongviet.jpg" alt="Category image">
+                                <img style="border-radius: 10%"
+                                    src="https://didongviet.vn/dchannel/wp-content/uploads/2022/10/6-audit-game-pc-didongviet.jpg"
+                                    alt="Category image">
                             </span>
                         </figure>
 
@@ -137,7 +150,8 @@
                     <a href="category.html" class="cat-block">
                         <figure>
                             <span>
-                                <img style="border-radius: 10%" src="https://canhrau.com/wp-content/uploads/2020/06/Top-game-online-PC-hay-nhat-hien-nay-hinh-2.jpg"alt="Category image">
+                                <img style="border-radius: 10%"
+                                    src="https://canhrau.com/wp-content/uploads/2020/06/Top-game-online-PC-hay-nhat-hien-nay-hinh-2.jpg"alt="Category image">
                             </span>
                         </figure>
 
@@ -149,7 +163,3 @@
     </div><!-- End .container -->
 
     <div class="mb-4"></div><!-- End .mb-4 -->
-
-
-
-

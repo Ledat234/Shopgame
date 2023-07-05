@@ -62,9 +62,9 @@
 
             <div class="form-group">
 
-                <strong>Description:</strong>
+                <strong>Country:</strong>
 
-                <textarea class="form-control" style="height:150px" name="country" placeholder="Country"></textarea>
+                <input class="form-control" name="country" placeholder="Country">
 
             </div>
 

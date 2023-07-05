@@ -1,114 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form role ="form" action="" method="post">
+@include('product.layout')
+@extends('admin.layout.index')
+    <form role="form" action="" method="post">
 
         @csrf
-        
+
         <label>Name</label>
-        
-        <input class="form-control" name="category_name" value ="{{$cate->category_name}}">
-        
+
+        <input class="form-control" name="name" value="{{ $cate->name }}">
+
         <label>Description</label>
-        
-        <input class="form-control" name="category_description" value ="{{$cate->category_description}}">
-        
+
+        <input class="form-control" name="description" value="{{ $cate->description }}">
+
         <button type="submit" class="btn btn-success">Submit Button</button>
-        
+
         <button type="reset" class="btn btn-primary">Reset Button</button>
-        @extends('admin.product.layout')
 
-@section('content')
+        @section('content')
 
-<div class="row">
+            <div class="row">
 
-<div class="col-lg-12 margin-tb">
+                <div class="col-lg-12 margin-tb">
 
-<div class="pull-left">
+                    <div class="pull-left">
 
-<h2>Edit Category</h2>
+                        <h2>Edit Category</h2>
 
-</div>
+                    </div>
 
-<div class="pull-right">
+                    <div class="pull-right">
 
-<a class="btn btn-primary" href="{{ route('product.index') }}"> Back</a>
+                        <a class="btn btn-primary" href="{{ route('product.index') }}"> Back</a>
 
-</div>
+                    </div>
 
-</div>
+                </div>
 
-</div>
+            </div>
 
-@if ($errors->any())
+            @if ($errors->any())
+                <div class="alert alert-danger">
 
-<div class="alert alert-danger">
+                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
 
-<strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <ul>
 
-<ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
 
-@foreach ($errors->all() as $error)
+                    </ul>
 
-<li>{{ $error }}</li>
+                </div>
+            @endif
 
-@endforeach
+            <form action="{{ route('category.update', $category->id) }}" method="POST" enctype="multipart/form-data">
 
-</ul>
+                @csrf
 
-</div>
+                <div class="row">
 
-@endif
+                    <div class="col-xs-12 col-sm-12 col-md-12">
 
-<form action="{{ route('category.update',$category->id) }}" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
 
-@csrf
+                            <strong>Name:</strong>
 
-<div class="row">
+                            <input type="text" name="name" class="form-control" placeholder="Name"
+                                value="{{ $category->name }}">
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+                        </div>
 
-<div class="form-group">
+                    </div>
 
-<strong>Name:</strong>
+                </div>
 
-<input type="text" name="category_name" class="form-control" placeholder="Name" value="{{ $category->category_name }}">
+                <div class="col-xs-12 col-sm-12 col-md-12">
 
-</div>
+                    <div class="form-group">
 
-</div>
+                        <strong>Description:</strong>
 
-</div>
+                        <textarea class="form-control" style="height:150px" name="description" placeholder="Description">{{ $category->description }}</textarea>
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+                    </div>
 
-<div class="form-group">
+                </div>
 
-<strong>Description:</strong>
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 
-<textarea class="form-control" style="height:150px" name="category_description" placeholder="Description">{{ $category->category_description }}</textarea>
+                    <button type="submit" class="btn btn-primary">Submit</button>
 
-</div>
+                </div>
 
-</div>
+                </div>
 
-<div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            </form>
 
-<button type="submit" class="btn btn-primary">Submit</button>
-
-</div>
-
-</div>
-
-</form>
-
-@endsection
-        </form>
+        @endsection
+    </form>
 </body>
+
 </html>
