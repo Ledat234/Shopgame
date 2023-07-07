@@ -70,75 +70,77 @@
 
             </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-12 col-sm-12 col-md-12">
 
-                    <div class="form-group">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
 
-                            <div class="form-group">
+                        <div class="form-group">
 
-                                <strong>Image:</strong>
+                            <strong>Image:</strong>
 
-                                <input type="file" class="form-control" placeholder="Image" value=""
-                                name="image[]" id ="" multiple />
-                                    
+                            <input type="file" class="form-control" placeholder="Image" value="" name="image[]"
+                                id="" multiple />
 
-                            </div>
-
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                                <div class="form-group">
-
-                                    <strong>Publisher:</strong>
-
-                                    <select name="publisher" class="form-control">
-
-                                        @foreach ($publishers as $publisher)
-                                            <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
-                                        @endforeach
-
-                                    </select>
-
-                                </div>
-
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                                <div class="form-group">
-
-                                    <strong>Price:</strong>
-
-                                    <input type="number" name="price" class="form-control" placeholder="Price">
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                                <div class="form-group">
-
-                                    <strong>Description:</strong>
-
-                                    <textarea class="form-control" style="height:150px" name="description" placeholder="Description"></textarea>
-
-                                </div>
-                            
-
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-
-                              
-
-                            </div>
-
-                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-
-                                <button type="submit" class="btn btn-primary">Submit</button>
-
-                            </div>
 
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+
+                <div class="form-group">
+
+                    <strong>Publisher:</strong>
+
+                    <select name="publisher" class="form-control">
+
+                        @foreach ($publishers as $publisher)
+                            <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
+                        @endforeach
+
+                    </select>
+
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+
+                <div class="form-group">
+
+                    <strong>Price:</strong>
+
+                    <input type="number" name="price" class="form-control" placeholder="Price">
+
+                </div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+
+                <div class="form-group">
+
+                    <strong>Description:</strong>
+
+                    <textarea class="form-control" style="height:150px" name="description" placeholder="Description"></textarea>
+
+                </div>
+
+
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+
+
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+            </div>
+
+        </div>
 
     </form>
 

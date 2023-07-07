@@ -69,9 +69,10 @@
     </div><!-- End .intro-slider-container -->
 
     <div class="container">
-        <h2 class="title text-center mb-4">Game Hot <img
-                src="https://static.vecteezy.com/system/resources/previews/020/522/257/original/fire-emoji-icon-free-png.png"
-                width="25px" height="25px" style="display:inline"></h2><!-- End .title text-center -->
+        <h2 class="title text-center mb-4">Game Hot
+            <img src="https://static.vecteezy.com/system/resources/previews/020/522/257/original/fire-emoji-icon-free-png.png"
+                width="25px" height="25px" style="display:inline">
+        </h2><!-- End .title text-center -->
 
 
         <div class="cat-blocks-container">

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
 use App\Models\Product;
 use App\Models\Image;
+use Illuminate\Support\Facades\DB;
 use App\Models\Publisher;
 class ProductController extends Controller
 {
@@ -38,11 +39,11 @@ class ProductController extends Controller
         if ($request->isMethod('POST')) {
 
             $validator = Validator::make($request->all(), [
-
                 'name' => 'required',
                 'price' => 'required',
                 'description' => 'required',
                 'image.*' => 'required|image|mimes:jpg,jpeg,png|max:100000',
+                
                 
             ]);
 
@@ -107,7 +108,8 @@ class ProductController extends Controller
 
         return view('product.edit', ['product' => $product, 'publishers' => $publishers]);
     }
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
+   
     {
         if ($request->isMethod('POST')) {
             
@@ -117,6 +119,7 @@ class ProductController extends Controller
                 'price' => 'required',
                 'description' => 'required',
                 'image.*' => 'required|image|mimes:jpg,jpeg,png|max:100000',
+                
             ]);
 
             if ($validator->fails()) {
@@ -124,8 +127,10 @@ class ProductController extends Controller
                 return redirect()->back()
                     ->withErrors($validator)
                     ->withInput();
+                    
 
             }
+            
             if($request->hasfile('image')){
                 $Product_Images=[];
                 $images =$request->file('image');
@@ -137,21 +142,26 @@ class ProductController extends Controller
                     $Product_Images[] =$image_name;
                 }   
             } else {
-                $image_name = 'noname.jpg';
+                $Product_Images[] = 'noname.jpg';
             }
-            $product = Product::find($id);
             
+           
+            $product = Product::find($id);
             if ($product != null) {
+                
                 $product->name = $request->name;
                 $product->price = $request->price;
                 $product->description = $request->description;
                 $product->publisher_id = $request->publisher;
-              
                 $product->save();
+              
+                Image::where('product_id', $id)->delete();
+
+                // Save new images for the product
                 foreach ($Product_Images as $image) {
                     $productImage = new Image();
                     $productImage->image = $image;
-                    $productImage->product_id = $product->id;
+                    $productImage->product_id = $id;
                     $productImage->save();
                 }
     
