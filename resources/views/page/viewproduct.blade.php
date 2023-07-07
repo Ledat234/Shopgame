@@ -18,7 +18,7 @@
                 <div class="img-display">
                     <div class="img-showcase">
                         @foreach ($product->image as $image)
-                            <img src="{{ asset('image/product/' . $image->image) }}" alt="">
+                            <img src="{{ asset('image/product/' . $image->image) }}" alt="" width="150px" height="300px">
                         @endforeach
                     </div>
                 </div>
@@ -59,7 +59,7 @@
             </div>
 
             <div class="social-links">
-                <p>Share At: </p>
+                <p>Share: </p>
                 <a href="#">
                     <i class="fab fa-facebook-f"></i>
                 </a>
@@ -94,16 +94,6 @@
                 slideImage();
             });
         });
-
-        function startInterval() {
-            intervalId = setInterval(() => {
-                imgId++;
-                if (imgId > imgBtns.length) {
-                    imgId = 1;
-                }
-                slideImage();
-            }, 5000);
-        }
 
         function slideImage() {
             const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
