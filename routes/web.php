@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Account;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ControllerPublisher;
@@ -90,3 +91,7 @@ Route::get('cart', [CartProductController::class, 'cart'])->name('cart');
 Route::get('add-to-cart/{id}', [CartProductController::class, 'addToCart'])->name('add_to_cart');
 Route::patch('update-cart', [CartProductController::class, 'update'])->name('update_cart');
 Route::delete('remove-from-cart', [CartProductController::class, 'remove'])->name('remove_from_cart'); 
+
+
+//view product
+Route::get('/game/detail{id}', [HomeController::class, 'show'])->name('home.show');

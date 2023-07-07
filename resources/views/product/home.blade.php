@@ -5,17 +5,17 @@
 
     <div class="list-product-subtitle">
         @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
 
         <p>List Game New</p>
 
         <div class="product-group">
 
             <div class="row">
-               
+
 
                 @foreach ($products as $product)
                     <div class="col-xs-18 col-sm-6 col-md-4" style="margin-top:10px;">
@@ -28,6 +28,8 @@
                                 <p><strong>Price: </strong> ${{ $product->price }}</p>
                                 <p class="btn-holder"><a href="{{ route('add_to_cart', $product->id) }}"
                                         class="btn btn-primary btn-block text-center" role="button">Add to cart</a> </p>
+                                <p class="btn-holder"><a href="{{ route('home.show', $product->id) }}"
+                                        class="btn btn-primary btn-block text-center" role="button">View </a> </p>
                             </div>
                         </div>
                     </div>
