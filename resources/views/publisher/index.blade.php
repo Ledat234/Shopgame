@@ -10,11 +10,9 @@
             
         </div>
         <div class="pull-left">
-            <a class="btn btn-success" href="{{ route('publisher.create') }}"> Add New Game</a>
+            <a class="btn btn-success" href="{{ route('publisher.create') }}"> Add New Publisher</a>
         </div>
-        <div class="pull-left">
-            <a class="btn btn-success" href="{{ route('publisher.create') }}"> Add New Game</a>
-        </div>
+       
     </div>
     @if ($message = Session::get('success'))
         <div class="alert alert-success">

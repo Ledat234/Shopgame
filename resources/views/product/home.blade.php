@@ -31,11 +31,5 @@
                             </div>
                         </div>
                     </div>
-                    <p class="item-price">{{ $product->name }}</b></p>
-                    <a href="#" class="btn btn-primary">View Detail</a>
-                </div>
-
-            </div>
-        </div>
-    @endforeach
-@endsection
+                @endforeach
+            @endsection
