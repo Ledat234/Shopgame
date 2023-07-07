@@ -10,7 +10,6 @@
             <div class="pull-left">
                 <a class="btn btn-success" href="{{ route('product.create') }}"> Add New Game</a>
             </div>
-
         </div>
     </div>
     @if ($message = Session::get('success'))

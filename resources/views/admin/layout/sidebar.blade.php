@@ -15,7 +15,7 @@
                 height="30px" style="padding: 0px">
             </div>
             <div class="info">
-                <a href="#" class="d-block">
+                <a href="{{ route('dashboard') }}" class="d-block">
                     @if (session('user'))
                         <p>{{ session('user')->name }}</p>
                     @endif
@@ -45,7 +45,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="./index.html" class="nav-link">
+                            <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Home Admin</p>
                             </a>
@@ -57,7 +57,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index3.html" class="nav-link active">
+                            <a href="{{ route('product.index') }}" class="nav-link active">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Home Seller</p>
                             </a>
@@ -88,15 +88,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('category.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p> Manage Category</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+                            <a href="{{route('welcome.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Fixed Sidebar</p>
+                                <p>Manage Account</p>
                             </a>
                         </li>
                         <li class="nav-item">

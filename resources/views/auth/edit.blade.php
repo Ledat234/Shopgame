@@ -105,27 +105,7 @@
                 </div>
 
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                <div class="form-group">
-                    <strong>Password:</strong>
-                    <input type="password" class="form-control" placeholder="Password *" value="" name="password" />
-
-                    @if ($errors->has('password'))
-                        {{ $errors->first('password') }}
-                    @endif
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                <div class="form-group">
-                    <strong>Confirm Password:</strong>
-                    <input type="password" class="form-control" placeholder="Confirm Password *" value=""
-                        name="password_confirmation" />
-
-                </div>
-            </div>
-
+          
 
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
