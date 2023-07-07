@@ -6,6 +6,11 @@
             <div class="pull-left">
                 <h2>Publisher Management</h2>
             </div>
+           
+            
+        </div>
+        <div class="pull-left">
+            <a class="btn btn-success" href="{{ route('publisher.create') }}"> Add New Game</a>
         </div>
         <div class="pull-left">
             <a class="btn btn-success" href="{{ route('publisher.create') }}"> Add New Game</a>

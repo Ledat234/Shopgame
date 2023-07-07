@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -24,7 +24,7 @@ class CategoryController extends Controller
     public function create()
     {
 
-        return view('category.create');
+return view('admin.category.create');
 
     }
 
@@ -72,7 +72,7 @@ class CategoryController extends Controller
 
         $category = Category::find($id);
 
-        return view('admin.category.show', ['category' => $category]);
+return view('admin.category.show', ['category' => $category]);
 
     }
 
@@ -81,7 +81,7 @@ class CategoryController extends Controller
 
         $category = Category::find($id);
 
-        return view('admin.category.edit', ['category' => $category]);
+return view('admin.category.edit', ['category' => $category]);
 
     }
 

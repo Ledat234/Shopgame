@@ -1,4 +1,3 @@
-@include('product.layout')
 @extends('clien.layout.index')
 @section('content')
     <h2 class="list-product-title">NEW Game</h2>
@@ -32,7 +31,11 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                    <p class="item-price">{{ $product->name }}</b></p>
+                    <a href="#" class="btn btn-primary">View Detail</a>
+                </div>
+
             </div>
         </div>
-    @endsection
+    @endforeach
+@endsection

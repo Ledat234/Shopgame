@@ -223,7 +223,7 @@
                         Don't have an account?<a href="{{ route('welcome.register') }}">Sign Up</a>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <a href="#">Forgot your password?</a>
+                        <a href="£">Forgot your password?</a>
                     </div>
                 </div>
 

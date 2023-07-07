@@ -1,4 +1,4 @@
-@include('music.layout')
+@include('publisher.layout')
 @extends('admin.layout.index')
 @section('content')
     <div class="row">

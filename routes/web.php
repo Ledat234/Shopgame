@@ -21,8 +21,9 @@ use App\Http\Controllers\CartProductController;
 |ch
 */
 
-
-
+Route::get('/test', function () {
+    return view('viewproduct.index');
+});
 //edit profile
 
 
@@ -36,7 +37,10 @@ Route::get('/game/show{id}', [ProductController::class, 'show'])->name('product.
 Route::post('/game/store', [ProductController::class, 'store'])->name('product.store');
 Route::get('/game/home', [ProductController::class, 'home'])->name('product.home');
 
-
+Route::get('/add-to-cart/{id}', [HomeController::class, 'addToCart']);
+Route::get('/cart', [HomeController::class, 'cart'])->name('pages.cart');
+Route::post('/update-cart/{id}', [HomeController::class, 'update'])->name('update-cart');
+Route::delete('/remove-from-cart/{id}', [HomeController::class, 'remove']);
 
 //fogot password
 

@@ -86,8 +86,8 @@
                                 <img src="{{ asset('image/product/' . $image->image) }}" alt="" style="margin: 15px"
                                     height=150 width=250>
                             @endforeach
-                            <input type="file" class="form-control" placeholder="Image" value=""
-                                name="image[]" id ="" multiple />
+                            <input type="file" class="form-control" placeholder="Image" value="" name="image[]"
+                                id="" multiple />
 
                         </div>
                     </div>

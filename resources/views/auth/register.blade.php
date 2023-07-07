@@ -240,7 +240,7 @@
 
                         <div class="col-md-6">
 
-                            <form action="{{ route('auth.register') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('auth.register')}}" method="POST" enctype="multipart/form-data">
 
                                 @csrf
 
@@ -255,6 +255,10 @@
                                 </div>
                                 
                                 <div class="form-group">
+                                    @if ($errors->has('country'))
+                                    {{ $errors->first('country') }}
+                            @endif
+
 
                                     <input type="text" class="form-control" placeholder="Country" value=""
                                         name="country" />
@@ -302,10 +306,17 @@
 
                                 
 
-                              
+                                @if ($errors->has('name'))
+                                    {{ $errors->first('name') }}
+                                @endif
 
+                                @if ($errors->has('country'))
+                                        {{ $errors->first('country') }}
+                                @endif
 
-                              
+                                @if ($errors->has('numberphone'))
+                                        {{ $errors->first('numberphone') }}
+                                @endif
 
 
 
@@ -342,3 +353,4 @@
     </div>
 
 </div
+
