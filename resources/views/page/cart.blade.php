@@ -1,4 +1,3 @@
-
 @extends('page.layout')
 @section('content')
     <table id="cart" class="table table-hover table-condensed">
@@ -14,30 +13,34 @@
         <tbody>
 
             @php $total = 0 @endphp
-            @if (session('cart'))
-                @foreach (session('cart') as $id => $details)
-                    @php $total += $details['price'] * $details['quantity'] @endphp
-                    <tr data-id="{{ $id }}">
-                        <td data-th="Product">
-                            <div class="row">
+@if (session('cart'))
+    @foreach (session('cart') as $id => $details)
+        @php
+            $price = isset($details['price']) ? $details['price'] : 0;
+            $quantity = isset($details['quantity']) ? $details['quantity'] : 0;
+            $subtotal = $price * $quantity;
+            $total += $subtotal;
+        @endphp
+        <tr data-id="{{ $id }}">
+            <td data-th="Product">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <h4 class="nomargin">{{ isset($details['product_name']) ? $details['product_name'] : '' }}</h4>
+                    </div>
+                </div>
+            </td>
+            <td data-th="Price">${{ $price }}</td>
+            <td data-th="Quantity">
+                <input type="number" value="{{ $quantity }}" class="form-control quantity cart_update" min="1" />
+            </td>
+            <td data-th="Subtotal" class="text-center">${{ $subtotal }}</td>
+            <td class="actions" data-th="">
+                <button class="btn btn-danger btn-sm cart_remove"><i class="fa fa-trash-o"></i> Delete</button>
+            </td>
+        </tr>
+    @endforeach
+@endif
 
-                                <div class="col-sm-9">
-                                    <h4 class="nomargin">{{ $details['product_name'] }}</h4>
-                                </div>
-                            </div>
-                        </td>
-                        <td data-th="Price">${{ $details['price'] }}</td>
-                        <td data-th="Quantity">
-                            <input type="number" value="{{ $details['quantity'] }}"
-                                class="form-control quantity cart_update" min="1" />
-                        </td>
-                        <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
-                        <td class="actions" data-th="">
-                            <button class="btn btn-danger btn-sm cart_remove"><i class="fa fa-trash-o"></i> Delete</button>
-                        </td>
-                    </tr>
-                @endforeach
-            @endif
         </tbody>
         <tfoot>
             <tr>

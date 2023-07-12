@@ -21,9 +21,8 @@ use App\Http\Controllers\CartProductController;
 |ch
 */
 
-Route::get('/test', function () {
-    return view('viewproduct.index');
-});
+
+
 //edit profile
 
 
@@ -37,10 +36,7 @@ Route::get('/game/show{id}', [ProductController::class, 'show'])->name('product.
 Route::post('/game/store', [ProductController::class, 'store'])->name('product.store');
 Route::get('/game/home', [ProductController::class, 'home'])->name('product.home');
 
-Route::get('/add-to-cart/{id}', [HomeController::class, 'addToCart']);
-Route::get('/cart', [HomeController::class, 'cart'])->name('pages.cart');
-Route::post('/update-cart/{id}', [HomeController::class, 'update'])->name('update-cart');
-Route::delete('/remove-from-cart/{id}', [HomeController::class, 'remove']);
+
 
 //fogot password
 
@@ -64,15 +60,12 @@ Route::post('/publisher/update{id}', [ControllerPublisher::class, 'update'])->na
 Route::get('/publisher/show{id}', [ControllerPublisher::class, 'show'])->name('publisher.show');
 Route::post('/publisher/store', [ControllerPublisher::class, 'store'])->name('publisher.store');
 
-
 Route::get('/profile/dashboard',[ProfileController::class, 'dashboard'])->name('dashboard');
 Route::get('/profile/edit', [ProfileController::class, 'edit_profile'])->name('edit_profile');
 Route::put('/profile/update', [ProfileController::class, 'update_profile'])->name('update_profile');
 
 Route::get('/profile/change-password', [ProfileController::class, 'change_password'])->name('change_password');
 Route::post('/profile/update-password', [ProfileController::class, 'update_password'])->name('update_password');    
-
-//category
 
 Route::get('/category/index', [CategoryController::class, 'index'])->name('category.index');
 Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
@@ -82,20 +75,16 @@ Route::post('/category/update{id}', [CategoryController::class, 'update'])->name
 Route::get('/category/show{id}', [CategoryController::class, 'show'])->name('category.show');
 Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
 
-// //test
-// Route ::get('/test/index',function(){
-//     return view('listproduct.index');
-// });
-
-
-
-
-// cart
 Route::get('cart', [CartProductController::class, 'cart'])->name('cart');
 Route::get('add-to-cart/{id}', [CartProductController::class, 'addToCart'])->name('add_to_cart');
 Route::patch('update-cart', [CartProductController::class, 'update'])->name('update_cart');
 Route::delete('remove-from-cart', [CartProductController::class, 'remove'])->name('remove_from_cart'); 
 
 
+
 //view product
 Route::get('/game/detail{id}', [HomeController::class, 'show'])->name('home.show');
+
+Route::get('/game/detail{id}', [HomeController::class, 'show'])->name('home.show');
+Route::get('/search', [HomeController::class, 'search'])->name('pages.search');
+

@@ -60,14 +60,14 @@ class Account extends Controller
 
             if ($user->role_id == 1) {
                 $request->session()->put('user', Auth::user());
-                return redirect()->intended('/game/index');
+                return redirect()->intended('/admin/home');
             } elseif ($user->role_id == 2) {
                 // Xử lý cho role 2
                 $request->session()->put('user', Auth::user());
                 return redirect()->intended('/game/home');
             } elseif ($user->role_id == 3) {
                 $request->session()->put('user', Auth::user());
-                return redirect()->intended('/');
+                return redirect()->intended('/admin/home');
             }
         }
 
@@ -99,8 +99,6 @@ class Account extends Controller
                     ->withInput();
 
             }
-
-
             $user = DB::table('users')->where('email', $request->email)->first();
             if (!$user) {
                 $newUser = new Users();
@@ -134,9 +132,7 @@ class Account extends Controller
     public function edit($id)
     {
         $roles = Role::all();
-
         $user = Users::with('role')->find($id);
-
         return view('auth.edit', ['user' => $user, 'roles' => $roles]);
 
 

@@ -16,7 +16,7 @@
         </div>
     @endif
     <div class="pull-left">
-        <a class="btn btn-success" href="{{ route('category.create') }}"> Add New Game</a>
+        <a class="btn btn-success" href="{{ route('category.create') }}"> Add New Category</a>
     </div>
     <table class="table table-bordered">
 
@@ -59,4 +59,17 @@
         @endforeach
 
     </table>
+    <div class="pagination">
+        @if ($categories->onFirstPage())
+            <span class="disabled">&laquo;</span>
+        @else
+            <a href="{{ $categories->previousPageUrl() }}" rel="prev">&laquo;</a>
+        @endif
+    
+        @if ($categories->hasMorePages())
+            <a href="{{ $categories->nextPageUrl() }}" rel="next">&raquo;</a>
+        @else
+            <span class="disabled">&raquo;</span>
+        @endif
+    </div>
 @endsection

@@ -2,7 +2,8 @@
     <div class="container">
         <div class="header-left">
             <div class="dropdown category-dropdown">
-                <a href="{{route('product.home')}}" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Browse Categories">
+                <a href="{{ route('product.home') }}" class="dropdown-toggle" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" data-display="static" title="Browse Categories">
                     Game Categories <i class="icon-angle-down"></i>
                 </a>
                 <div class="dropdown-menu">
@@ -16,7 +17,7 @@
                             <li><a href="#">Shooting</a></li>
                             <li><a href="#">Sport</a></li>
                             <li><a href="#">More...</a></li>
-                            
+
                         </ul><!-- End .menu-vertical -->
                     </nav><!-- End .side-nav -->
                 </div><!-- End .dropdown-menu -->
@@ -27,21 +28,30 @@
             <nav class="main-nav">
                 <ul class="menu sf-arrows">
                     <li class="megamenu-container active">
-                        <a href="index.html" class="">Home</a>                       
+                        <a href="index.html" class="">Home</a>
                     <li>
-                        <a href="#" >Shop</a>
+                        <a href="#">Shop</a>
                     <li>
                         <a href="#" class="">Product</a>
                     <li>
                         <a href="#" class="">Pages</a>
                     <li>
-                        <a href="#" >Blog</a>
+                        <a href="#">Blog</a>
                     <li>
-                        <a href="#" >Elements</a>
+                        <a href="#">Elements</a>
                     </li>
+                    @if (auth()->user()->role_id == 3 || auth()->user()->role_id == 1)
+
+                        <li>
+                            <a href="{{ route('admin.home') }}">Manager</a>
+                        </li>
+
+                        </li>
+                    @endif
+
             </nav><!-- End .main-nav -->
         </div><!-- End .header-center -->
 
-        
+
     </div><!-- End .container -->
 </div><!-- End .header-bottom -->

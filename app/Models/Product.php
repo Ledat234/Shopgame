@@ -30,6 +30,10 @@ class Product extends Model
 
 
     }
+    public function category()
+    {
+        return $this->belongsToMany(Category::class);
+    }
     public function _order_product(){
         return $this->hasMany('App\Models\OrderProduct');
 
