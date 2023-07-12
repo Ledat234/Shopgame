@@ -16,7 +16,10 @@ use Illuminate\Support\Facades\Auth;
 class ProfileController extends Controller
 {
     public function dashboard(){
-    	return view('profile.dashboard');
+        $user=auth()->user();
+    	$data['user']=$user;
+       
+    	return view('profile.dashboard',$data);
     }
     public function edit_profile(){
     	$user=auth()->user();

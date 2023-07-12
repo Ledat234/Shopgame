@@ -6,6 +6,7 @@
             <div class="pull-left">
                 <h2> Show Game</h2>
             </div>
+<<<<<<< HEAD
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('product.home') }}"> Back</a>
             </div>
@@ -13,12 +14,24 @@
     </div>
     <div class="card-wrapper">
         <div class="card">
+=======
+        </div>
+    </div>
+    <div class="card-wrapper">
+        
+        <div class="card">
+            
+>>>>>>> 647cbf899fbc15fe6e1a50b1455a9a8283439dba
             <!-- card left -->
             <div class="product-imgs">
                 <div class="img-display">
                     <div class="img-showcase">
                         @foreach ($product->image as $image)
+<<<<<<< HEAD
                             <img src="{{ asset('image/product/' . $image->image) }}" alt="">
+=======
+                            <img src="{{ asset('image/product/' . $image->image) }}" alt="" width="150px" height="300px">
+>>>>>>> 647cbf899fbc15fe6e1a50b1455a9a8283439dba
                         @endforeach
                     </div>
                 </div>
@@ -57,9 +70,15 @@
                         class="btn btn-primary btn-block text-center" role="button">Add to cart</a> </p>
 
             </div>
+<<<<<<< HEAD
 
             <div class="social-links">
                 <p>Share At: </p>
+=======
+          
+            <div class="social-links">
+                <p>Share: </p>
+>>>>>>> 647cbf899fbc15fe6e1a50b1455a9a8283439dba
                 <a href="#">
                     <i class="fab fa-facebook-f"></i>
                 </a>
@@ -76,6 +95,12 @@
                     <i class="fab fa-pinterest"></i>
                 </a>
             </div>
+<<<<<<< HEAD
+=======
+            <div class="purchase-info">
+                <a class="btn btn-primary" href="{{ route('product.home') }}"> Back</a>
+            </div>
+>>>>>>> 647cbf899fbc15fe6e1a50b1455a9a8283439dba
         </div>
     </div>
     </div>
@@ -95,6 +120,7 @@
             });
         });
 
+<<<<<<< HEAD
         function startInterval() {
             intervalId = setInterval(() => {
                 imgId++;
@@ -105,6 +131,8 @@
             }, 5000);
         }
 
+=======
+>>>>>>> 647cbf899fbc15fe6e1a50b1455a9a8283439dba
         function slideImage() {
             const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
 

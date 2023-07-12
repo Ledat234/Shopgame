@@ -8,9 +8,7 @@
             @include('admin.layout.sidebar')
             <div class="content-wrapper">
             <div class="container-fluid">
-                @if (session('user'))
-                    <p>Hello , {{ session('user')->name }}</p>
-                @endif
+                
 
                 <!-- Hiển thị nội dung của từng trang con-->
                 @yield('content')

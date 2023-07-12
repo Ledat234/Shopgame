@@ -14,4 +14,17 @@ class HomeController extends Controller
 
         return view('page.viewproduct', ['product' => $product]);
     }
+<<<<<<< HEAD
+=======
+    public function search(){
+       
+        $search = $_GET['query'];
+  
+        $searchs = Product::where('name', 'LIKE', '%'.$search.'%')
+                    ->orWhere('description', 'LIKE', '%'.$search.'%')
+                    ->get();
+        
+        return view('page.search', compact('searchs'));
+    }
+>>>>>>> 647cbf899fbc15fe6e1a50b1455a9a8283439dba
 }
