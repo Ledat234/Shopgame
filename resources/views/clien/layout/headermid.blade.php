@@ -65,27 +65,27 @@
                     </div>
                 </div>
             </div>
-            <div class="nav">
-                <li class="nav-profile dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-
-                        <div class="dropdown-divider"></div>
-                        <a href="{{ route('dashboard') }}" class="dropdown-item">
-                            <i class="fa fa-user" aria-hidden="true"></i> MyProfile
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="{{ route('logout') }}" class="dropdown-item">
-                            <i class='fas fa-sign-out-alt'></i> Logout
+                <div class="nav">
+                    <li class="nav-profile dropdown">
+                        <a class="nav-link" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user" aria-hidden="true"></i>
 
                         </a>
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
 
-                        </a>
-                    </div>
-            </div>
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ route('dashboard') }}" class="dropdown-item">
+                                <i class="fa fa-user" aria-hidden="true"></i> MyProfile
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ route('logout') }}" class="dropdown-item">
+                                <i class='fas fa-sign-out-alt'></i> Logout
+
+                            </a>
+
+                            </a>
+                        </div>
+                </div>
 
 
         </div><!-- End .header-right -->

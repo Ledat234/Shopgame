@@ -178,9 +178,10 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        $product = Product::find($id);
-
+        $product = Product::findOrFail($id);
+        Image::where('product_id', $id)->delete();
         $product->delete();
+
 
         return redirect()->route('product.index')
 
