@@ -40,15 +40,7 @@
                     <li>
                         <a href="#">Elements</a>
                     </li>
-                    @if (auth()->user()->role_id == 3 || auth()->user()->role_id == 1)
-
-                        <li>
-                            <a href="{{ route('admin.home') }}">Manager</a>
-                        </li>
-
-                        </li>
-                    @endif
-
+                   
             </nav><!-- End .main-nav -->
         </div><!-- End .header-center -->
 
