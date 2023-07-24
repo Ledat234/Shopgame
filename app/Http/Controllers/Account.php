@@ -34,7 +34,7 @@ class Account extends Controller
     }
     public function showLogin()
     {
-        return view('auth.login'); //return login page
+        return view('product.home'); //return login page
 
     }
 
