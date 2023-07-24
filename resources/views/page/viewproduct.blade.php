@@ -6,19 +6,18 @@
             <div class="pull-left">
                 <h2> Show Game</h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('product.home') }}"> Back</a>
-            </div>
         </div>
     </div>
     <div class="card-wrapper">
+        
         <div class="card">
+            
             <!-- card left -->
             <div class="product-imgs">
                 <div class="img-display">
                     <div class="img-showcase">
                         @foreach ($product->image as $image)
-                            <img src="{{ asset('image/product/' . $image->image) }}" alt="">
+                            <img src="{{ asset('image/product/' . $image->image) }}" alt="" width="150px" height="300px">
                         @endforeach
                     </div>
                 </div>
@@ -57,9 +56,9 @@
                         class="btn btn-primary btn-block text-center" role="button">Add to cart</a> </p>
 
             </div>
-
+          
             <div class="social-links">
-                <p>Share At: </p>
+                <p>Share: </p>
                 <a href="#">
                     <i class="fab fa-facebook-f"></i>
                 </a>
@@ -75,6 +74,9 @@
                 <a href="#">
                     <i class="fab fa-pinterest"></i>
                 </a>
+            </div>
+            <div class="purchase-info">
+                <a class="btn btn-primary" href="{{ route('product.home') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -94,16 +96,6 @@
                 slideImage();
             });
         });
-
-        function startInterval() {
-            intervalId = setInterval(() => {
-                imgId++;
-                if (imgId > imgBtns.length) {
-                    imgId = 1;
-                }
-                slideImage();
-            }, 5000);
-        }
 
         function slideImage() {
             const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;

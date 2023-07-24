@@ -86,9 +86,8 @@
                                 <img src="{{ asset('image/product/' . $image->image) }}" alt="" style="margin: 15px"
                                     height=150 width=250>
                             @endforeach
-                            <input type="file" class="form-control" placeholder="Image" value=""
-                                name="image[]" id ="" multiple />
-
+                            <input type="file" class="form-control" placeholder="Image" value="" name="image[]"
+                                id="" multiple />
                         </div>
                     </div>
                 </div>
@@ -102,7 +101,21 @@
                         value="{{ $product->price }}">
 
                 </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
 
+                <div class="form-group">
+
+                    <label>Categories:</label>
+                    @foreach ($categories as $category)
+                        <div>
+                            <input type="checkbox" name="categories[]" id="category_{{ $category->id }}"
+                                value="{{ $category->id }}">
+                            <label for="category_{{ $category->id }}">{{ $category->name }}</label>
+                        </div>
+                    @endforeach
+
+                </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
 
@@ -115,7 +128,6 @@
                 </div>
 
             </div>
-
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 

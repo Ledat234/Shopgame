@@ -24,12 +24,14 @@
                                 alt="">
                             <div class="caption">
                                 <h4>{{ $product->name }}</h4>
-                                <p>{{ $product->description }}</p>
+                                <strong>Category:</strong>
+                                    @foreach ($product->category as $category)
+                                       <a href="#"> {{ $category->name }}</a>
+                                    @endforeach
                                 <p><strong>Price: </strong> ${{ $product->price }}</p>
-                                <p class="btn-holder"><a href="{{ route('add_to_cart', $product->id) }}"
-                                        class="btn btn-primary btn-block text-center" role="button">Add to cart</a> </p>
-                                <p class="btn-holder"><a href="{{ route('home.show', $product->id) }}"
-                                        class="btn btn-primary btn-block text-center" role="button">View </a> </p>
+                                
+                                <p class="purchase-info"><a href="{{ route('home.show', $product->id) }}"
+                                        class="btn btn-primary btn-block text-center" role="button">View Detail</a> </p>
                             </div>
                         </div>
                     </div>

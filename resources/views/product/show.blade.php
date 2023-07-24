@@ -41,13 +41,14 @@
             <div class="form-group">
 
                 <strong>Image:</strong>
-                <img src="{{ asset('image/product/' . $product->image[0]->image) }}" alt="" style="margin: 15px" height=150 width=250><br>
-                @foreach ($product ->image as $image)
-                    <img src="{{ asset('image/product/' .$image->image) }}" alt="" style="margin: 15px" height=150 width=250>
+               
+                @foreach ($product->image as $image)
+                    <img src="{{ asset('image/product/' . $image->image) }}" alt="" style="margin: 15px" height=150
+                        width=250>
                 @endforeach
 
 
-               
+
 
             </div>
 
@@ -62,6 +63,21 @@
                 <strong>Publisher:</strong>
 
                 {{ $product->publisher->name }}
+
+            </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="form-group">
+
+                <strong>Category:</strong>
+
+                <ul class="inline-list">
+                    @foreach ($product->category as $category)
+                        <li>{{ $category->name }}</li>
+                    @endforeach
+                </ul>
 
             </div>
 
