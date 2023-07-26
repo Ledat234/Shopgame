@@ -24,6 +24,7 @@ class Account extends Controller
         return view('auth.register', ['roles' => $roles]); //return register page
 
     }
+   
     public function showAccount()
     {
         $users = Users::latest()->paginate(20);
@@ -187,5 +188,10 @@ class Account extends Controller
 
             ->with('i', (request()->input('page', 1) - 1) * 20);
     }
-    
+    public function addAccount(){
+        $roles = Role::all();
+
+        return view('auth.create', ['roles' => $roles]); //return register page
+
+    }
 }

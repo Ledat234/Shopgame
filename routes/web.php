@@ -40,7 +40,9 @@ Route::post('/login', [Account::class, 'login'])->name('auth.login');
 
 Route::get('/account/edit{id}', [Account::class, 'edit'])->name('welcome.update');
 Route::post('/account/update{id}', [Account::class, 'update'])->name('auth.update');
+Route::get('/account/create', [Account::class, 'addAccount'])->name('auth.create');
 Route::get('/account/index', [Account::class, 'showAccount'])->name('welcome.index');
+
 Route::get('/account:delete{id}', [ControllerPublisher::class, 'destroy'])->name('welcome.destroy');
 
 

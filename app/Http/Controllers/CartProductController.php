@@ -18,27 +18,25 @@ class CartProductController extends Controller
 
     public function cart()
     {
-        return view('page.cart');
+        $cartProducts = CartProduct::with('product')->get();
+        // Retrieve the cartProducts from the database with associated products
+
+        return view('page.cart', compact('cartProducts'));
     }
     public function addToCart($id)
     {
-        $product = Product::findOrFail($id);
- 
-        $cart = session()->get('cart', []);
- 
-        if(isset($cart[$id])) {
-            $cart[$id]['quantity']++;
-        }  else {
-            $cart[$id] = [
-                "product_name" => $product->name,
-                "image" => $product->image,
-                "price" => $product->price,
-                "quantity" => 1
-            ];
+        $cartProducts = CartProduct::with('product')->get();
+        
+        if (Auth::check()) {
+            $userId = Auth::id();
+            $userCartProducts = CartProduct::whereHas('cart', function ($query) use ($userId) {
+                $query->where('user_id', $userId);
+            })->with('product')->get();
+
+            return view('page.cart', compact('userCartProducts'));
         }
- 
-        session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product add to cart successfully!');
+       
+        return view('page.cart', compact('cartProducts'));
     }
  
     public function update(Request $request)

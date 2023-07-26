@@ -2,89 +2,86 @@
 @extends('admin.layout.index')
 @section('content')
 
-<div class="row">
+    <div class="row">
 
-<div class="col-lg-12 margin-tb">
+        <div class="col-lg-12 margin-tb">
 
-<div class="pull-left">
+            <div class="pull-left">
 
-<h2>Add New Category</h2>
+                <h2>Add New Category</h2>
 
-</div>
+            </div>
 
-<div class="pull-right">
+            <div class="pull-right">
 
-<a class="btn btn-primary" href="{{ route('category.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('category.index') }}"> Back</a>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
-@if ($errors->any())
+    @if ($errors->any())
+        <div class="alert alert-danger">
 
-<div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
 
-<strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
 
-<ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
 
-@foreach ($errors->all() as $error)
+            </ul>
 
-<li>{{ $error }}</li>
+        </div>
+    @endif
 
-@endforeach
+    <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
 
-</ul>
+        @csrf
 
-</div>
+        <div class="row">
 
-@endif
+            <div class="col-xs-12 col-sm-12 col-md-12">
 
-<form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
 
-@csrf
+                    <strong>Name:</strong>
 
-<div class="row">
+                    <input type="text" name="name" class="form-control" placeholder="Name">
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+                </div>
 
-<div class="form-group">
+            </div>
 
-<strong>Name:</strong>
+        </div>
 
-<input type="text" name="name" class="form-control" placeholder="Name">
+        <div class="col-xs-12 col-sm-12 col-md-12">
 
-</div>
+            <div class="form-group">
 
-</div>
+                <strong>Description:</strong>
 
-</div>
+                <textarea class="form-control" style="height:150px" name="description" placeholder="Description"></textarea>
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+            </div>
 
-<div class="form-group">
+        </div>
 
-<strong>Description:</strong>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 
-<textarea class="form-control" style="height:150px" name="description" placeholder="Description"></textarea>
+            <button type="submit" class="btn btn-primary">Submit</button>
 
-</div>
+        </div>
 
-</div>
+        </div>
 
-<div class="col-xs-12 col-sm-12 col-md-12 text-center">
-
-<button type="submit" class="btn btn-primary">Submit</button>
-
-</div>
-
-</div>
-
-</form>
+    </form>
 
 @endsection
-        </form>
+</form>
 </body>
+
 </html>
