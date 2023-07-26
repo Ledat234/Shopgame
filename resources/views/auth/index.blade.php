@@ -15,6 +15,9 @@
             <p>{{ $message }}</p>
         </div>
     @endif
+    <div class="pull-left">
+        <a class="btn btn-success" href="{{ route('auth.create') }}"> Add New Account</a>
+    </div>
     <table class="table table-bordered" ,border="0">
         <tr>
             <th>No</th>

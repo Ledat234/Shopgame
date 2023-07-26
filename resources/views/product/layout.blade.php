@@ -51,6 +51,11 @@
         .btn {
             border-radius: 0;
         }
+        .images{
+            width: 400px;
+            height: 300px;
+            object-fit: cover;
+        }
 
         .img-thumbnail {
             border: none;

@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Session;
 
 class CartProductController extends Controller
 {
-
     public function cart()
     {
         return view('page.cart');
@@ -62,4 +61,36 @@ class CartProductController extends Controller
             session()->flash('success', 'Product successfully removed!');
         }
     }
+    private function getCart()
+    {
+        $user = auth()->user();
+
+        // Check if the user already has a cart
+        $cart = $user->cart;
+
+        if (!$cart) {
+            // Create a new cart
+            $cart = new Cart();
+            $cart->user_id = $user->id;
+            $cart->save();
+        }
+
+        return $cart;
+    }
+
+    public function destroy($id)
+    {
+
+        $cart = Cart::find($id);
+
+        $cart->delete();
+
+        return redirect()->route('product.index')
+
+            ->with('success', 'Cart deleted successfully');
+
+    }
 }
+
+
+    

@@ -17,7 +17,7 @@ class ProductController extends Controller
     {
         $products = Product::latest()->paginate(20);
 
-        return view('admin.home', compact('products'))
+        return view('product.home', compact('products'))
 
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
@@ -29,7 +29,7 @@ class ProductController extends Controller
     }
     public function admin()
     {
-        return view('admin.product.index');
+        return view('admin.home');
     }
     public function create()
     {

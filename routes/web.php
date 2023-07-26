@@ -21,11 +21,7 @@ use App\Http\Controllers\CartProductController;
 |ch
 */
 
-
-
-//edit profile
-
-
+Route::get('/admin/home', [ProductController::class, 'admin'])->name('admin.home');
 
 Route::get('/game/index', [ProductController::class, 'index'])->name('product.index');
 Route::get('/game/create', [ProductController::class, 'create'])->name('product.create');
@@ -36,10 +32,6 @@ Route::get('/game/show{id}', [ProductController::class, 'show'])->name('product.
 Route::post('/game/store', [ProductController::class, 'store'])->name('product.store');
 Route::get('/game/home', [ProductController::class, 'home'])->name('product.home');
 
-
-
-//fogot password
-
 Route::post('/account/login', [Account::class, 'store'])->name('auth.register');
 Route::get('/register', [Account::class, 'show'])->name('welcome.register');
 Route::get('/', [Account::class, 'showLogin'])->name('welcome.login');
@@ -48,6 +40,7 @@ Route::post('/login', [Account::class, 'login'])->name('auth.login');
 
 Route::get('/account/edit{id}', [Account::class, 'edit'])->name('welcome.update');
 Route::post('/account/update{id}', [Account::class, 'update'])->name('auth.update');
+Route::get('/account/create', [Account::class, 'create'])->name('auth.create');
 Route::get('/account/index', [Account::class, 'showAccount'])->name('welcome.index');
 Route::get('/account:delete{id}', [ControllerPublisher::class, 'destroy'])->name('welcome.destroy');
 
@@ -80,11 +73,5 @@ Route::get('add-to-cart/{id}', [CartProductController::class, 'addToCart'])->nam
 Route::patch('update-cart', [CartProductController::class, 'update'])->name('update_cart');
 Route::delete('remove-from-cart', [CartProductController::class, 'remove'])->name('remove_from_cart'); 
 
-
-
-//view product
-Route::get('/game/detail{id}', [HomeController::class, 'show'])->name('home.show');
-
 Route::get('/game/detail{id}', [HomeController::class, 'show'])->name('home.show');
 Route::get('/search', [HomeController::class, 'search'])->name('pages.search');
-

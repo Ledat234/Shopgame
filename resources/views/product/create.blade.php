@@ -93,7 +93,7 @@
 
                     <strong>Publisher:</strong>
                     <div class="d-flex justify-content-center links">
-                        <a href="{{ route('publisher.create') }}">add new publisher</a>
+                        <a href="{{ route('publisher.create') }}"></a>
                     </div>
                     <select name="publisher" class="form-control">
                         
@@ -137,7 +137,7 @@
                         <div class="form-group">
                             <label>Categories:</label>
                             <div class="d-flex justify-content-center links">
-                                <a href="{{ route('category.create') }}">add new category</a>
+                                <a href="{{ route('category.create') }}"></a>
                             </div>
                             
                             @foreach ($categories as $category)

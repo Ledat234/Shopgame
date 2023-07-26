@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-
 use App\Models\Users;
 use Session;
 use App\Models\Role;
@@ -16,7 +15,24 @@ use Illuminate\Support\Facades\Auth;
 class Account extends Controller
 {
 
+    public function create(Request $request)
+    {
+        // Validate the incoming request data
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:accounts',
+            'password' => 'required|string',
+            'role_id' => 'required|integer',
+        ]);
 
+        // Create a new Account record using the validated data
+        $account = Account::create($validatedData);
+
+        // Optionally, you can do something after creating the account, such as redirecting or returning a response.
+
+        // For example:
+        return redirect()->route('accounts.index')->with('success', 'Account created successfully!');
+    }
     public function show()
     {
         $roles = Role::all();
@@ -186,6 +202,17 @@ class Account extends Controller
         return view('admin.home', compact('users'))
 
             ->with('i', (request()->input('page', 1) - 1) * 20);
+    }
+    public function destroy($id)
+    {
+        $users = Users::find($id);
+
+        $users->delete();
+
+
+        return redirect()->route('account.index')
+
+            ->with('success', 'Account deleted successfully');
     }
     
 }

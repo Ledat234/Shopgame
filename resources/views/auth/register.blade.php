@@ -306,15 +306,6 @@
 
                                 </div>
 
-                                
-
-                              
-
-
-                              
-
-
-
                                 <div class="form-group">
 
                                     <select class="form-control" name="role">
