@@ -169,10 +169,10 @@ class Account extends Controller
                 $user->email = $request->email;
                 $user->role_id = $request->role;
                 $user->save();
-                return redirect()->route('product.index')
+                return redirect()->route('welcome.index')
                     ->with('success', 'Account updated successfully');
             } else {
-                return redirect()->route('product.index')
+                return redirect()->route('welcome.index')
                     ->with('Error', 'Account not update');
 
             }

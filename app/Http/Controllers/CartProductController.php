@@ -25,39 +25,121 @@ class CartProductController extends Controller
     }
     public function addToCart($id)
     {
-        $cartProducts = CartProduct::with('product')->get();
-        
+        $product = Product::findOrFail($id);
+ 
         if (Auth::check()) {
-            $userId = Auth::id();
-            $userCartProducts = CartProduct::whereHas('cart', function ($query) use ($userId) {
-                $query->where('user_id', $userId);
-            })->with('product')->get();
-
-            return view('page.cart', compact('userCartProducts'));
-        }
-       
-        return view('page.cart', compact('cartProducts'));
-    }
+            $user = Auth::user();
+            $cart = Cart::where('user_id', $user->id)->first();
  
-    public function update(Request $request)
-    {
-        if($request->id && $request->quantity){
-            $cart = session()->get('cart');
-            $cart[$request->id]["quantity"] = $request->quantity;
+            if (!$cart) {
+                $cart = new Cart();
+                $cart->user_id = $user->id;
+                $cart->quantity = 1;
+                $cart->save();
+            }
+ 
+            $cartItem = $cart->cart_product()->where('product_id', $product->id)->first();
+ 
+            if ($cartItem) {
+                $cartItem->quantity++;
+                $cartItem->save();
+            } else {
+                // Tạo đối tượng CartItem mới và gán giá trị quantity ban đầu là 1
+                $cartItem = new CartProduct();
+                $cartItem->cart_id = $cart->id;
+                $cartItem->product_id = $product->id;
+                $cartItem->quantity = 1;
+                $cartItem->price = 1;
+                $cartItem->save();
+            }
+        } else {
+            // Xử lý khi người dùng chưa đăng nhập
+            $cart = session()->get('cart', []);
+            
+            if (isset($cart[$id])) {
+                $cart[$id]['quantity']++;
+            } else {
+                $cart[$id] = [
+                    "product_name" => $product->name,
+                    "image" => $product->image,
+                    "price" => $product->price,
+                    "quantity" => 1
+                ];
+            }
+            
             session()->put('cart', $cart);
-            session()->flash('success', 'Cart successfully updated!');
         }
+
+        // Lưu giỏ hàng vào session sau khi thêm sản phẩm
+        session()->put('cart', $cart);
+
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
- 
+    public function updateCartQuantity($productId, $quantity)
+    {
+        $cart = Session::get('cart', []);
+
+        if (isset($cart[$productId])) {
+            if ($quantity <= 0) {
+                unset($cart[$productId]);
+            } else {
+                $cart[$productId]['quantity'] = $quantity;
+            }
+
+            Session::put('cart', $cart);
+            session()->flash('success', 'Cart successfully updated!');
+        } else {
+            session()->flash('error', 'Product not found in the cart.');
+        }
+
+        return redirect()->route('cart.show');
+    }
+
+    public function updateCart(Request $request)
+    {
+        $this->validate($request, [
+            'product_id' => 'required|exists:product,id',
+            'quantity' => 'required|integer|min:1',
+        ]);
+
+        $productId = $request->input('product_id');
+        $quantity = $request->input('quantity');
+
+        return $this->updateCartQuantity($productId, $quantity);
+    }
+
+
     public function remove(Request $request)
     {
-        if($request->id) {
-            $cart = session()->get('cart');
-            if(isset($cart[$request->id])) {
-                unset($cart[$request->id]);
-                session()->put('cart', $cart);
-            }
+        $productId = $request->id;
+        $userId = Auth::id();
+        $cartProduct = CartProduct::whereHas('cart', function ($query) use ($userId) {
+            $query->where('user_id', $userId);
+        })->where('product_id', $productId)->first();
+
+        if ($cartProduct) {
+            $cartProduct->delete();
             session()->flash('success', 'Product successfully removed!');
+        } else {
+            session()->flash('error', 'Product not found in the cart.');
         }
+
+        return redirect()->route('cart'); // Chuyển hướng về trang hiển thị giỏ hàng sau khi xóa
+    }
+
+    public function showCart()
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $cart = Cart::where('user_id', $user->id)->with('cart_product')->first();
+
+            if ($cart) {
+                $cartProducts = $cart->CartProduct;
+            } else {
+                // Handle the case when the user has an empty cart
+                $cartProducts = [];
+            }
+        } 
+        return view('page.cart', compact('cartProducts'));
     }
 }

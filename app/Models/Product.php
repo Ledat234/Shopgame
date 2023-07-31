@@ -17,7 +17,7 @@ class Product extends Model
     public function publisher(){
         return $this->belongsTo('App\Models\Publisher','publisher_id');
     }
-    public function _category_product(){
+    public function category_product(){
         return $this->hasMany('App\Models\CategoryProduct');
 
     }
@@ -25,7 +25,7 @@ class Product extends Model
         return $this->hasMany('App\Models\Image');
 
     }
-    public function _cart_product(){
+    public function cart_product(){
         return $this->hasMany('App\Models\CartProduct');
 
 

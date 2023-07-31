@@ -15,7 +15,7 @@ class Users extends Model
     public function role(){
         return $this->belongsTo('App\Models\Role','role_id');
     }
-    public function _review(){
+    public function review(){
         return $this->hasMany('App\Models\Review');
 
     }
