@@ -13,7 +13,7 @@ class Category extends Model
     protected $fillable= [
         'name','description'
     ]   ;
-    public function _category_product(){
+    public function category_product(){
         return $this->hasMany('App\Models\CategoryProduct');
     }
     

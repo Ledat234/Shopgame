@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CartProduct extends Model
 {
     use HasFactory;
-    public $table='_cart_product';
+    public $table='cart_product';
     protected $primarykey ='id';
     public function product(){
         return $this->belongsTo('App\Models\Product','product_id');

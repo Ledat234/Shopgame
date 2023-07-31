@@ -24,6 +24,7 @@ class Account extends Controller
         return view('auth.register', ['roles' => $roles]); //return register page
 
     }
+   
     public function showAccount()
     {
         $users = Users::latest()->paginate(20);
@@ -34,7 +35,7 @@ class Account extends Controller
     }
     public function showLogin()
     {
-        return view('product.home'); //return login page
+        return view('auth.login'); //return login page
 
     }
 
@@ -168,10 +169,10 @@ class Account extends Controller
                 $user->email = $request->email;
                 $user->role_id = $request->role;
                 $user->save();
-                return redirect()->route('product.index')
+                return redirect()->route('welcome.index')
                     ->with('success', 'Account updated successfully');
             } else {
-                return redirect()->route('product.index')
+                return redirect()->route('welcome.index')
                     ->with('Error', 'Account not update');
 
             }
@@ -187,5 +188,10 @@ class Account extends Controller
 
             ->with('i', (request()->input('page', 1) - 1) * 20);
     }
-    
+    public function addAccount(){
+        $roles = Role::all();
+
+        return view('auth.create', ['roles' => $roles]); //return register page
+
+    }
 }

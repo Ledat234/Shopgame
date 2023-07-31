@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Game Management</h2>
+                <h2>Account Management</h2>
             </div>
             <br><br>
             
@@ -15,6 +15,9 @@
             <p>{{ $message }}</p>
         </div>
     @endif
+    <div class="pull-left">
+        <a class="btn btn-success" href="{{ route('auth.create') }}"> Add New Account</a>
+    </div>
     <table class="table table-bordered" ,border="0">
         <tr>
             <th>No</th>

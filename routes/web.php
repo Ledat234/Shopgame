@@ -40,6 +40,7 @@ Route::post('/login', [Account::class, 'login'])->name('auth.login');
 
 Route::get('/account/edit{id}', [Account::class, 'edit'])->name('welcome.update');
 Route::post('/account/update{id}', [Account::class, 'update'])->name('auth.update');
+Route::get('/account/create', [Account::class, 'addAccount'])->name('auth.create');
 Route::get('/account/index', [Account::class, 'showAccount'])->name('welcome.index');
 Route::get('/account:delete{id}', [ControllerPublisher::class, 'destroy'])->name('welcome.destroy');
 
@@ -61,16 +62,17 @@ Route::post('/profile/update-password', [ProfileController::class, 'update_passw
 
 Route::get('/category/index', [CategoryController::class, 'index'])->name('category.index');
 Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
-Route::get('/category:delete{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
-Route::get('/category/edit{id}', [CategoryController::class, 'edit'])->name('category.edit');
-Route::post('/category/update{id}', [CategoryController::class, 'update'])->name('category.update');
-Route::get('/category/show{id}', [CategoryController::class, 'show'])->name('category.show');
 Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
+Route::get('/category/{id}', [CategoryController::class, 'show'])->name('category.show');
+Route::get('/category/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
+Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
 Route::get('cart', [CartProductController::class, 'cart'])->name('cart');
 Route::get('add-to-cart/{id}', [CartProductController::class, 'addToCart'])->name('add_to_cart');
-Route::patch('update-cart', [CartProductController::class, 'update'])->name('update_cart');
-Route::delete('remove-from-cart', [CartProductController::class, 'remove'])->name('remove_from_cart'); 
+Route::post('/cart/update', [CartProductController::class, 'updateCart'])->name('cart.update');
+Route::delete('/cart/remove/{id}', [CartProductController::class, 'remove'])->name('cart.remove');
+Route::get('/cart/confirm-delete/{id}', [CartProductController::class, 'confirmDelete'])->name('cart.confirmDelete');
 
 Route::get('/game/detail{id}', [HomeController::class, 'show'])->name('home.show');
 Route::get('/search', [HomeController::class, 'search'])->name('pages.search');

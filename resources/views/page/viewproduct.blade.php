@@ -44,12 +44,16 @@
 
             <div class="product-detail">
                 <h2>about this item: </h2>
-                <p> {{ $product->description }}</p>
-                <ul>
-                    <li>Publisher: <span> {{ $product->publisher->name }}</span></li>
-                </ul>
+                
+                <strong>
+                    Publisher: <span> {{ $product->publisher->name }}</span>
+                </strong>
             </div>
-
+            <strong>Category:</strong>
+            @foreach ($product->category as $category)
+               <a href="#"> {{ $category->name }}</a>
+            @endforeach
+            <p> {{ $product->description }}</p>
             <div class="purchase-info">
 
                 <p class="btn-holder"><a href="{{ route('add_to_cart', $product->id) }}"
@@ -88,6 +92,7 @@
         const imgs = document.querySelectorAll('.img-select a');
         const imgBtns = [...imgs];
         let imgId = 1;
+        setTimeout(showSlides, 5000);
 
         imgBtns.forEach((imgItem) => {
             imgItem.addEventListener('click', (event) => {
@@ -101,6 +106,7 @@
             const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
 
             document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
+            
         }
 
 
