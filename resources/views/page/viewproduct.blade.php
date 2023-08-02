@@ -9,15 +9,15 @@
         </div>
     </div>
     <div class="card-wrapper">
-        
+
         <div class="card">
-            
+
             <!-- card left -->
             <div class="product-imgs">
                 <div class="img-display">
                     <div class="img-showcase">
                         @foreach ($product->image as $image)
-                            <img src="{{ asset('image/product/' . $image->image) }}" alt="" width="150px" height="300px">
+                            <img src="{{ asset('image/product/' . $image->image) }}" alt="">
                         @endforeach
                     </div>
                 </div>
@@ -25,8 +25,7 @@
                     @foreach ($product->image as $index => $image)
                         <div class="img-item">
                             <a href="#" data-id="{{ $index + 1 }}">
-                                <img src="{{ asset('image/product/' . $image->image) }}" alt="" style="margin: 15px"
-                                    height="150" width="250"><br>
+                                <img src="{{ asset('image/product/' . $image->image) }}" alt=""><br>
                             </a>
                         </div>
                     @endforeach
@@ -44,14 +43,14 @@
 
             <div class="product-detail">
                 <h2>about this item: </h2>
-                
+
                 <strong>
                     Publisher: <span> {{ $product->publisher->name }}</span>
                 </strong>
             </div>
             <strong>Category:</strong>
             @foreach ($product->category as $category)
-               <a href="#"> {{ $category->name }}</a>
+                <a href="#"> {{ $category->name }}</a>
             @endforeach
             <p> {{ $product->description }}</p>
             <div class="purchase-info">
@@ -60,7 +59,7 @@
                         class="btn btn-primary btn-block text-center" role="button">Add to cart</a> </p>
 
             </div>
-          
+
             <div class="social-links">
                 <p>Share: </p>
                 <a href="#">
@@ -92,7 +91,7 @@
         const imgs = document.querySelectorAll('.img-select a');
         const imgBtns = [...imgs];
         let imgId = 1;
-        setTimeout(showSlides, 5000);
+
 
         imgBtns.forEach((imgItem) => {
             imgItem.addEventListener('click', (event) => {
@@ -106,7 +105,7 @@
             const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
 
             document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
-            
+
         }
 
 

@@ -10,9 +10,10 @@
 
 
             <a href="{{ route('dashboard') }}" class="dropdown-item">
-                <i class="fa fa-user" aria-hidden="true"></i>  @if (session('user'))
-              <b>{{ session('user')->name }}</b> 
-            @endif
+                <i class="fa fa-user" aria-hidden="true"></i>
+                @if (session('user'))
+                    <b>{{ session('user')->name }}</b>
+                @endif
             </a>
             <div class="dropdown-divider"></div>
             <a href="{{ route('logout') }}" class="dropdown-item">
@@ -39,46 +40,48 @@
         </thead>
         <tbody>
             @php $total = 0; @endphp
-            @foreach ($cartProducts as $cartProduct)
-                @php
-                    $id = $cartProduct->id;
-                    $price = $cartProduct->product->price;
-                    $quantity = $cartProduct->quantity;
-                    $subtotal = $price * $quantity;
-                    $total += $subtotal;
-                @endphp
-                <tr data-id="{{ $id }}">
-                    <td data-th="Product">
-                        <div class="row">
-                            <div class="col-sm-3 hidden-xs">
-                                <img src="{{ asset('image/product/' . $cartProduct->product->image[0]->image) }}"
-                                    alt="" class="img-responsive" width="100p" />
+            @if (!is_null($cartProducts))
+                @foreach ($cartProducts as $cartProduct)
+                    @php
+                        $id = $cartProduct->id;
+                        $price = $cartProduct->product->price;
+                        $quantity = $cartProduct->quantity;
+                        $subtotal = $price * $quantity;
+                        $total += $subtotal;
+                    @endphp
+                    <tr data-id="{{ $id }}">
+                        <td data-th="Product">
+                            <div class="row">
+                                <div class="col-sm-3 hidden-xs">
+                                    <img src="{{ asset('image/product/' . $cartProduct->product->image[0]->image) }}"
+                                        alt="" class="img-responsive" width="100p" />
+                                </div>
+                                <div class="col-sm-9">
+                                    <h4 class="nomargin">{{ $cartProduct->product->name }}</h4>
+                                </div>
                             </div>
-                            <div class="col-sm-9">
-                                <h4 class="nomargin">{{ $cartProduct->product->name }}</h4>
-                            </div>
-                        </div>
-                    </td>
-                    <td data-th="Price">${{ $cartProduct->product->price }}</td>
-                    <td data-th="Quantity">{{ $cartProduct->quantity }}</td>
-                    <td data-th="Subtotal" class="text-center">${{ $subtotal }}</td>
-                    <td class="actions" data-th="">
-                        <form action="{{ route('cart.remove', $cartProduct->product_id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                        <form action="{{ route('cart.update') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="product_id" value="{{ $cartProduct->product_id }}">
+                        </td>
+                        <td data-th="Price">${{ $cartProduct->product->price }}</td>
+                        <td data-th="Quantity">{{ $cartProduct->quantity }}</td>
+                        <td data-th="Subtotal" class="text-center">${{ $subtotal }}</td>
+                        <td class="actions" data-th="">
+                            <form action="{{ route('cart.remove', $cartProduct->product_id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                            {{-- <form action="{{ route('cart.update') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $cartProduct->product_id }}">
 
-                            <button type="submit" class="btn btn-primary">Update</button>
-                        </form>
-                        <!-- Add any actions/buttons here if needed -->
-                    </td>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </form> --}}
+                            <!-- Add any actions/buttons here if needed -->
+                        </td>
 
-                </tr>
-            @endforeach
+                    </tr>
+                @endforeach
+            @endif
         </tbody>
         <tfoot>
             <tr>

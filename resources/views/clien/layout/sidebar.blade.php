@@ -29,21 +29,25 @@
                 <ul class="menu sf-arrows">
                     <li class="megamenu-container active">
                         <a href="index.html" class="">Home</a>
+                    </li>
                     <li>
                         <a href="#">Shop</a>
+                    </li>
                     <li>
                         <a href="#" class="">Product</a>
+                    </li>
                     <li>
                         <a href="#" class="">Pages</a>
+                    </li>
                     <li>
                         <a href="#">Blog</a>
+                    </li>
                     <li>
                         <a href="#">Elements</a>
                     </li>
-                   
+                </ul>
             </nav><!-- End .main-nav -->
         </div><!-- End .header-center -->
-
 
     </div><!-- End .container -->
 </div><!-- End .header-bottom -->

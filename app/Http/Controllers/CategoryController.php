@@ -9,10 +9,6 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
-
-
-
-
     public function index()
     {
 
@@ -72,7 +68,7 @@ class CategoryController extends Controller
 
         $category = Category::find($id);
 
-        return view('admin.category.show', ['category' => $category]);
+        return view('category.show', ['category' => $category]);
 
     }
 
@@ -81,7 +77,7 @@ class CategoryController extends Controller
 
         $category = Category::find($id);
 
-        return view('admin.category.edit', ['category' => $category]);
+        return view('category.edit', ['category' => $category]);
 
     }
 

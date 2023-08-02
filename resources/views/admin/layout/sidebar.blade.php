@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="{{route('admin.home')}}" class="brand-link">
         <img src="https://www.creativosonline.org/wp-content/uploads/2022/11/gamer-logo.png" alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3" width="50px" height="50px">
         <span class="brand-text font-weight-light">Admin</span>
@@ -89,20 +89,24 @@
                             </a>
                         </li>
                         @if (auth()->user()->role_id == 3)
-                        <li class="nav-item">
-                            <a href="{{ route('welcome.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Manage Account</p>
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a href="{{ route('welcome.index') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Manage Account</p>
+                                </a>
+                            </li>
                         @endif
-                       
+
 
                     </ul>
                 </li>
 
                 <!-- /.sidebar -->
+            </ul>
+        </nav>
+    </div>
 </aside>
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
 </aside>
+

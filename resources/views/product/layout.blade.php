@@ -5,26 +5,17 @@
 <head>
 
     <title>Manage Game</title>
-    <link href="{{asset("vendor/fontawesome-free/css/all.min.css")}}" rel="stylesheet" type="text/css">
-    <link
-        href="{{asset("https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i")}}"
-        rel="stylesheet">
 
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- IonIcons -->
+    <link rel="stylesheet" href="{{ asset('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css') }}">
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="{{asset("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css")}}" rel="stylesheet">
-    <style>
-        .images-detail {
-        
-            align-items: center;
-            width: 250px;
-            height: 150px;
-            
-           
-        }
+    <link href="{{ asset('dist/css/adminlte.min.css') }}" rel="stylesheet">
 
-       
-    </style>
+    
 </head>
 
 <body>

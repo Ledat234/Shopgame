@@ -16,30 +16,35 @@ use Illuminate\Support\Facades\Session;
 class CartProductController extends Controller
 {
 
-    public function cart()
+    public function cart(Request $request)
     {
-        $cartProducts = CartProduct::with('product')->get();
-        // Retrieve the cartProducts from the database with associated products
+        $userId = Auth::id();
 
-        return view('page.cart', compact('cartProducts'));
+    // Retrieve cart products for the authenticated user
+    $cartProducts = CartProduct::whereHas('cart', function ($query) use ($userId) {
+        $query->where('user_id', $userId);
+    })->get();
+
+    // Pass the cart products to the view
+    return view('page.cart', compact('cartProducts'));
     }
     public function addToCart($id)
     {
         $product = Product::findOrFail($id);
- 
+
         if (Auth::check()) {
             $user = Auth::user();
             $cart = Cart::where('user_id', $user->id)->first();
- 
+
             if (!$cart) {
                 $cart = new Cart();
                 $cart->user_id = $user->id;
                 $cart->quantity = 1;
                 $cart->save();
             }
- 
+
             $cartItem = $cart->cart_product()->where('product_id', $product->id)->first();
- 
+
             if ($cartItem) {
                 $cartItem->quantity++;
                 $cartItem->save();
@@ -55,7 +60,7 @@ class CartProductController extends Controller
         } else {
             // Xử lý khi người dùng chưa đăng nhập
             $cart = session()->get('cart', []);
-            
+
             if (isset($cart[$id])) {
                 $cart[$id]['quantity']++;
             } else {
@@ -66,7 +71,7 @@ class CartProductController extends Controller
                     "quantity" => 1
                 ];
             }
-            
+
             session()->put('cart', $cart);
         }
 
@@ -139,7 +144,7 @@ class CartProductController extends Controller
                 // Handle the case when the user has an empty cart
                 $cartProducts = [];
             }
-        } 
+        }
         return view('page.cart', compact('cartProducts'));
     }
 }
