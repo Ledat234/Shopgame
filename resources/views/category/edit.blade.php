@@ -1,36 +1,60 @@
 @include('product.layout')
 @extends('admin.layout.index')
-    <form role="form" action="" method="post">
+<form role="form" action="" method="post">
 
-        @csrf
+   
+    @section('content')
 
-        <label>Name</label>
+        <div class="row">
 
-        <input class="form-control" name="name" value="{{ $cate->name }}">
+            <div class="col-lg-12 margin-tb">
 
-        <label>Description</label>
+                <div class="pull-left">
 
-        <input class="form-control" name="description" value="{{ $cate->description }}">
+                    <h2>Edit Category</h2>
 
-        <button type="submit" class="btn btn-success">Submit Button</button>
+                </div>
 
-        <button type="reset" class="btn btn-primary">Reset Button</button>
+                <div class="pull-right">
 
-        @section('content')
+                    <a class="btn btn-primary" href="{{ route('category.index') }}"> Back</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+
+                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+
+                <ul>
+
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+
+                </ul>
+
+            </div>
+        @endif
+
+        <form action="{{ route('category.update', $category->id) }}" method="POST" enctype="multipart/form-data">
+
+            @csrf
 
             <div class="row">
 
-                <div class="col-lg-12 margin-tb">
+                <div class="col-xs-12 col-sm-12 col-md-12">
 
-                    <div class="pull-left">
+                    <div class="form-group">
 
-                        <h2>Edit Category</h2>
+                        <strong>Name:</strong>
 
-                    </div>
-
-                    <div class="pull-right">
-
-                        <a class="btn btn-primary" href="{{ route('product.index') }}"> Back</a>
+                        <input type="text" name="name" class="form-control" placeholder="Name"
+                            value="{{ $category->name }}">
 
                     </div>
 
@@ -38,67 +62,30 @@
 
             </div>
 
-            @if ($errors->any())
-                <div class="alert alert-danger">
+            <div class="col-xs-12 col-sm-12 col-md-12">
 
-                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                <div class="form-group">
 
-                    <ul>
+                    <strong>Description:</strong>
 
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-
-                    </ul>
-
-                </div>
-            @endif
-
-            <form action="{{ route('category.update', $category->id) }}" method="POST" enctype="multipart/form-data">
-
-                @csrf
-
-                <div class="row">
-
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-
-                        <div class="form-group">
-
-                            <strong>Name:</strong>
-
-                            <input type="text" name="name" class="form-control" placeholder="Name"
-                                value="{{ $category->name }}">
-
-                        </div>
-
-                    </div>
+                    <textarea class="form-control" style="height:150px" name="description" placeholder="Description">{{ $category->description }}</textarea>
 
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-12">
+            </div>
 
-                    <div class="form-group">
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 
-                        <strong>Description:</strong>
+                <button type="submit" class="btn btn-primary">Submit</button>
 
-                        <textarea class="form-control" style="height:150px" name="description" placeholder="Description">{{ $category->description }}</textarea>
+            </div>
 
-                    </div>
+            </div>
 
-                </div>
+        </form>
 
-                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
-
-                </div>
-
-                </div>
-
-            </form>
-
-        @endsection
-    </form>
+    @endsection
+</form>
 </body>
 
 </html>

@@ -1,53 +1,51 @@
-@extends('admin.product.layout')
+@extends('admin.layout.index')
 
 @section('content')
+    <div class="row">
 
-<div class="row">
+        <div class="col-lg-12 margin-tb">
 
-<div class="col-lg-12 margin-tb">
+            <div class="pull-left">
 
-<div class="pull-left">
+                <h2> Show Category</h2>
 
-<h2> Show Category</h2>
+            </div>
 
-</div>
+            <div class="pull-right">
 
-<div class="pull-right">
+                <a class="btn btn-primary" href="{{ route('category.index') }}"> Back</a>
 
-<a class="btn btn-primary" href="{{ route('product.index') }}"> Back</a>
+            </div>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
-</div>
+    <div class="row">
 
-<div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
 
-<div class="form-group">
+                <strong>Name:</strong>
 
-<strong>Name:</strong>
+                {{ $category->name }}
 
-{{ $category->category_name }}
+            </div>
 
-</div>
+        </div>
 
-</div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
 
-<div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
 
-<div class="form-group">
+                <strong>Details:</strong>
 
-<strong>Details:</strong>
+                {{ $category->description }}
 
-{{ $category->category_description }}
+            </div>
 
-</div>
+        </div>
 
-</div>
-
-</div>
-
+    </div>
 @endsection

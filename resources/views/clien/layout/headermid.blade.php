@@ -1,6 +1,5 @@
 <div class="header-middle">
     <div class="container">
-
         <div class="header-left">
             <button class="mobile-menu-toggler">
                 <span class="sr-only">Toggle mobile menu</span>
@@ -44,7 +43,10 @@
 
 
                         <a href="{{ route('dashboard') }}" class="dropdown-item">
-                            <i class="fa fa-user" aria-hidden="true"></i> MyProfile
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            @if (session('user'))
+                                <b>{{ session('user')->name }}</b>
+                            @endif
                         </a>
                         <div class="dropdown-divider"></div>
                         <a href="{{ route('logout') }}" class="dropdown-item">
@@ -54,11 +56,9 @@
 
                         </a>
                     </div>
-
+                </li>
             </div>
-
-
         </div><!-- End .header-right -->
     </div><!-- End .container -->
 </div><!-- End .header-middle -->
-@yield('scripts')
+

@@ -35,7 +35,7 @@
                 <td>{{ $product->publisher->name }}</td>
 
                 <td><img class="images-detail" src="{{ asset('image/product/' . $product->image[0]->image) }}" alt=""
-                        height=150 width=150>
+                        height=150 width=250>
                 </td>
 
                 <td>{{ $product->price }} $</td>

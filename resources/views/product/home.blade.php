@@ -1,15 +1,14 @@
 @include('product.layout')
 @extends('clien.layout.index')
 @section('content')
-    <h2 class="list-product-title">NEW Game</h2>
-
-    <div class="list-product-subtitle">
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2>Game</h2>
             </div>
-        @endif
-
+        </div>
+    </div>
+    <div class="list-product-subtitle">
         <p>List Game New</p>
 
         <div class="product-group">
@@ -25,11 +24,11 @@
                             <div class="caption">
                                 <h4>{{ $product->name }}</h4>
                                 <strong>Category:</strong>
-                                    @foreach ($product->category as $category)
-                                       <a href="#"> {{ $category->name }}</a>
-                                    @endforeach
+                                @foreach ($product->category as $category)
+                                    <a href="#"> {{ $category->name }}</a>
+                                @endforeach
                                 <p><strong>Price: </strong> ${{ $product->price }}</p>
-                                
+
                                 <p class="purchase-info"><a href="{{ route('home.show', $product->id) }}"
                                         class="btn btn-primary btn-block text-center" role="button">View Detail</a> </p>
                             </div>
@@ -38,4 +37,5 @@
                 @endforeach
             </div>
         </div>
-    @endsection
+    </div>
+@endsection
