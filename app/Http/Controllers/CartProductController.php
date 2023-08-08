@@ -20,13 +20,13 @@ class CartProductController extends Controller
     {
         $userId = Auth::id();
 
-    // Retrieve cart products for the authenticated user
-    $cartProducts = CartProduct::whereHas('cart', function ($query) use ($userId) {
-        $query->where('user_id', $userId);
-    })->get();
+        // Retrieve cart products for the authenticated user
+        $cartProducts = CartProduct::whereHas('cart', function ($query) use ($userId) {
+            $query->where('user_id', $userId);
+        })->get();
 
-    // Pass the cart products to the view
-    return view('page.cart', compact('cartProducts'));
+        // Pass the cart products to the view
+        return view('page.cart', compact('cartProducts'));
     }
     public function addToCart($id)
     {
@@ -78,7 +78,7 @@ class CartProductController extends Controller
         // Lưu giỏ hàng vào session sau khi thêm sản phẩm
         session()->put('cart', $cart);
 
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return redirect()->route('cart');
     }
     public function updateCartQuantity($productId, $quantity)
     {

@@ -194,4 +194,11 @@ class Account extends Controller
         return view('auth.create', ['roles' => $roles]); //return register page
 
     }
+    public function destroy($id)
+    {
+        $account = Users::find($id);
+        $account->delete();
+        return redirect()->route('welcome.index')
+            ->with('success', 'Account deleted successfully');
+    }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\CartProduct;
+use App\Models\CategoryProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Product;
@@ -153,7 +155,7 @@ class ProductController extends Controller
                 $product->description = $request->description;
                 $product->publisher_id = $request->publisher;
                 $product->save();
-                
+
                 $product->category()->sync($request->input('categories'));
                 Image::where('product_id', $id)->delete();
 
@@ -178,11 +180,14 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
+        if (!$product) {
+            return redirect()->route('product.index')->with('error', 'Product not found');
+        }
+        CartProduct::where('product_id', $id)->delete();
+        CategoryProduct::where('product_id', $id)->delete();
         Image::where('product_id', $id)->delete();
         $product->delete();
-
         return redirect()->route('product.index')
-
             ->with('success', 'Game deleted successfully');
     }
 
