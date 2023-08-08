@@ -72,8 +72,8 @@ class ControllerPublisher extends Controller
             return redirect()->route('publisher.index')
 
                 ->with('success', 'Publisher created successfully.');
+        }
     }
-}
 
     /**
      * Display the specified resource.
