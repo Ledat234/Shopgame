@@ -111,10 +111,10 @@ class Account extends Controller
                 $newUser->role_id = $request->role;
                 $newUser->save();
 
-                return redirect()->route('welcome.login')->with('message', 'Create success!');
+                return redirect()->route('welcome.login')->with('message', 'Create Success!!');
             } else {
 
-                return redirect()->route('welcome.register')->with('message', 'Create failed!');
+                return redirect()->route('welcome.register')->with('message', 'Create Failed!!');
 
             }
 
