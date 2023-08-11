@@ -43,25 +43,17 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         if ($request->isMethod('POST')) {
-
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'price' => 'required',
                 'description' => 'required',
                 'image.*' => 'required|image|mimes:jpg,jpeg,png|max:100000',
             ]);
-
             if ($validator->fails()) {
-
                 return redirect()->back()
-
                     ->withErrors($validator)
-
                     ->withInput();
-
             }
-
-
             if ($request->hasfile('image')) {
                 $Product_Images = [];
                 $images = $request->file('image');
@@ -74,15 +66,11 @@ class ProductController extends Controller
             } else {
                 $image_name = 'noname.jpg';
             }
-
-
             $newProduct = new Product();
             $newProduct->name = $request->name;
             $newProduct->price = $request->price;
             $newProduct->description = $request->description;
             $newProduct->publisher_id = $request->publisher;
-
-
             $newProduct->save();
             $newProduct->category()->attach($request->input('categories'));
             $lastInserttedID = $newProduct->id;
@@ -92,9 +80,7 @@ class ProductController extends Controller
                 $newProductImage->product_id = $lastInserttedID;
                 $newProductImage->save();
             }
-
             return redirect()->route('product.index')
-
                 ->with('success', 'Game Add successfully.');
         }
 
@@ -116,28 +102,21 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         if ($request->isMethod('POST')) {
-
-
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'price' => 'required',
                 'description' => 'required',
                 'image.*' => 'required|image|mimes:jpg,jpeg,png|max:100000',
-
             ]);
-
             if ($validator->fails()) {
-
                 return redirect()->back()
                     ->withErrors($validator)
                     ->withInput();
             }
-
             if ($request->hasfile('image')) {
                 $Product_Images = [];
                 $images = $request->file('image');
                 foreach ($images as $image) {
-
                     $path = public_path('image/product');
                     $image_name = time() . '_' . $image->getClientOriginalName();
                     $image->move($path, $image_name);
@@ -146,19 +125,15 @@ class ProductController extends Controller
             } else {
                 $Product_Images[] = 'noname.jpg';
             }
-
             $product = Product::find($id);
             if ($product != null) {
-
                 $product->name = $request->name;
                 $product->price = $request->price;
                 $product->description = $request->description;
                 $product->publisher_id = $request->publisher;
                 $product->save();
-
                 $product->category()->sync($request->input('categories'));
                 Image::where('product_id', $id)->delete();
-
                 // Save new images for the product
                 foreach ($Product_Images as $image) {
                     $productImage = new Image();
@@ -166,13 +141,11 @@ class ProductController extends Controller
                     $productImage->product_id = $id;
                     $productImage->save();
                 }
-
                 return redirect()->route('product.index')
                     ->with('success', 'Game updated successfully');
             } else {
                 return redirect()->route('product.index')
                     ->with('Error', 'Game not update');
-
             }
         }
     }
