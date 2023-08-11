@@ -14,7 +14,14 @@
     <link rel="stylesheet" href="{{ asset('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css') }}">
     <!-- Custom styles for this template-->
     <link href="{{ asset('dist/css/adminlte.min.css') }}" rel="stylesheet">
+<style>
+     .images{
+            width: 350px;
+            height: 250px;
+            object-fit: cover;
+        }
 
+</style>
     
 </head>
 

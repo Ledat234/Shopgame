@@ -70,13 +70,7 @@
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
-                            {{-- <form action="{{ route('cart.update') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="product_id" value="{{ $cartProduct->product_id }}">
-
-                                <button type="submit" class="btn btn-primary">Update</button>
-                            </form> --}}
-                            <!-- Add any actions/buttons here if needed -->
+                           
                         </td>
 
                     </tr>

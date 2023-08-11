@@ -15,29 +15,32 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    public function dashboard(){
-        $user=auth()->user();
-    	$data['user']=$user;
-       
-    	return view('profile.dashboard',$data);
+    public function dashboard()
+    {
+        $user = auth()->user();
+        $data['user'] = $user;
+
+        return view('profile.dashboard', $data);
     }
-    public function edit_profile(){
-    	$user=auth()->user();
-    	$data['user']=$user;
-    	return view('profile.edit_profile',$data);
+    public function edit_profile()
+    {
+        $user = auth()->user();
+        $data['user'] = $user;
+        return view('profile.edit_profile', $data);
     }
 
-    public function update_profile(Request $request){
-    	 $request->validate([
+    public function update_profile(Request $request)
+    {
+        $request->validate([
             'email' => 'required|email|max:100',
             'name' => 'required|min:5|max:1000',
             'country' => 'required|max:1000',
             'numberphone' => 'required|max:15',
-            
-         ]);
 
-         $user=auth()->user();
-         if ($user != null) {
+        ]);
+
+        $user = auth()->user();
+        if ($user != null) {
             $user->name = $request->name;
             $user->country = $request->country;
             $user->numberphone = $request->numberphone;
@@ -50,30 +53,32 @@ class ProfileController extends Controller
                 ->with('Error', 'Account not update');
 
         }
-        
 
-        
+
+
 
     }
 
-    public function change_password(){ 
+    public function change_password()
+    {
         return view('profile.change_password');
     }
 
 
-    public function update_password(Request $request){
+    public function update_password(Request $request)
+    {
         $request->validate([
-        'old_password'=>'required|min:6|max:100',
-        'new_password'=>'required|min:6|max:100',
-        'confirm_password'=>'required|same:new_password'
+            'old_password' => 'required|min:6|max:100',
+            'new_password' => 'required|min:6|max:100',
+            'confirm_password' => 'required|same:new_password'
         ]);
 
-        $current_user=auth()->user();
+        $current_user = auth()->user();
 
-        if(Hash::check($request->old_password,$current_user->password)){
+        if (Hash::check($request->old_password, $current_user->password)) {
 
             $current_user->update([
-                'password'=>bcrypt($request->new_password)
+                'password' => bcrypt($request->new_password)
             ]);
             $current_user->save();
             return redirect()->route('logout')
@@ -82,8 +87,7 @@ class ProfileController extends Controller
             return redirect()->route('change_password')
                 ->with('Error', 'Password updated Fails ,Check the old password');
 
-        }   
-
+        }
 
     }
 }

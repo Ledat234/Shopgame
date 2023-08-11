@@ -11,11 +11,7 @@ use App\Models\Publisher;
 
 class ControllerPublisher extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
         $publishers = Publisher::latest()->paginate(5);
@@ -23,22 +19,13 @@ class ControllerPublisher extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         return view('publisher.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+  
     public function store(Request $request)
     {
         if ($request->isMethod('POST')) {
@@ -75,12 +62,7 @@ class ControllerPublisher extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $publisher = Publisher::find($id);
@@ -88,12 +70,7 @@ class ControllerPublisher extends Controller
         return view('publisher.show', ['publisher' => $publisher]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         $publisher = Publisher::find($id);
@@ -101,13 +78,7 @@ class ControllerPublisher extends Controller
         return view('publisher.edit', ['publisher' => $publisher]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         if ($request->isMethod('POST')) {
@@ -155,12 +126,7 @@ class ControllerPublisher extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         $publisher = Publisher::find($id);

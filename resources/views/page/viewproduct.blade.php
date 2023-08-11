@@ -54,10 +54,8 @@
             @endforeach
             <p> {{ $product->description }}</p>
             <div class="purchase-info">
-
                 <p class="btn-holder"><a href="{{ route('add_to_cart', $product->id) }}"
                         class="btn btn-primary btn-block text-center" role="button">Add to cart</a> </p>
-
             </div>
 
             <div class="social-links">

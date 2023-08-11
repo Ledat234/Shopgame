@@ -36,12 +36,8 @@
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->numberphone }}</td>
                 <td>{{ $user->role->name }}</td>
-                
-
                 <td>
-
                     <form action="{{ route('welcome.destroy', $user->id) }}" method="POST">
-                       
                         <a class="btn btn-primary" href="{{ route('welcome.update', $user->id) }}">Edit</a>
                         <a class="btn btn-primary" href="{{ route('welcome.destroy', $user->id) }}">Delete</a>
                     </form>

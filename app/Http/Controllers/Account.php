@@ -24,7 +24,7 @@ class Account extends Controller
         return view('auth.register', ['roles' => $roles]); //return register page
 
     }
-   
+
     public function showAccount()
     {
         $users = Users::latest()->paginate(20);
@@ -78,27 +78,18 @@ class Account extends Controller
 
     public function store(Request $request)
     {
-
         if ($request->isMethod('POST')) {
-
             $validator = Validator::make($request->all(), [
-
                 'email' => 'required|email|max:100',
                 'name' => 'required|min:5|max:1000',
                 'country' => 'required|max:1000',
                 'numberphone' => 'required|max:15',
                 'password' => 'required|confirmed|max:16|min:6',
-
             ]);
-
             if ($validator->fails()) {
-
                 return redirect()->back()
-
                     ->withErrors($validator)
-
                     ->withInput();
-
             }
             $user = DB::table('users')->where('email', $request->email)->first();
             if (!$user) {
@@ -110,16 +101,12 @@ class Account extends Controller
                 $newUser->name = $request->name;
                 $newUser->role_id = $request->role;
                 $newUser->save();
-
                 return redirect()->route('welcome.login')->with('message', 'Create success!');
             } else {
-
                 return redirect()->route('welcome.register')->with('message', 'Create failed!');
 
             }
-
         }
-
     }
 
     public function logout()
@@ -148,19 +135,12 @@ class Account extends Controller
                 'name' => 'required|min:5|max:1000',
                 'country' => 'required|max:1000',
                 'numberphone' => 'required|max:15'
-
             ]);
-
             if ($validator->fails()) {
-
                 return redirect()->back()
                     ->withErrors($validator)
                     ->withInput();
-
             }
-
-
-
             $user = Users::find($id);
             if ($user != null) {
                 $user->name = $request->name;
@@ -176,9 +156,7 @@ class Account extends Controller
                     ->with('Error', 'Account not update');
 
             }
-
         }
-
     }
     public function loginAdmin()
     {
@@ -188,7 +166,8 @@ class Account extends Controller
 
             ->with('i', (request()->input('page', 1) - 1) * 20);
     }
-    public function addAccount(){
+    public function addAccount()
+    {
         $roles = Role::all();
 
         return view('auth.create', ['roles' => $roles]); //return register page
